@@ -9,7 +9,7 @@
 
 ## 1. Overview
 
-A single-page/multi-section developer portfolio website themed around Spider-Man, showcasing projects, skills, and resume content through interactive, GPU-friendly animations. The goal is to stand out from typical portfolio templates while remaining fast, accessible, and recruiter-friendly on all devices.
+A multi-page developer portfolio website themed around Spider-Man, showcasing projects, skills, and resume content across dedicated routes through interactive, GPU-friendly animations. The goal is to stand out from typical portfolio templates while remaining fast, accessible, and recruiter-friendly on all devices.
 
 ### Core Principles
 - **Performance first** — no feature should cause jank or hang on low-end phones.
@@ -52,16 +52,17 @@ A single-page/multi-section developer portfolio website themed around Spider-Man
 
 ### 4.1 Signature Features (Must-Have)
 
-1. **Web-Sling Scroll**
-   - GSAP ScrollTrigger-driven section transitions with subtle swing/arc easing (not literal pendulum physics — subtle enough to not cause motion sickness).
-   - Must respect `prefers-reduced-motion` → falls back to standard scroll.
+1. **Web-Sling Page Navigation**
+   - GSAP-driven page transitions with subtle swing/arc easing when navigating between routes (not literal pendulum physics — subtle enough to not cause motion sickness).
+   - Must respect `prefers-reduced-motion` → falls back to standard instant navigation.
 
 2. **Web Cursor Interaction**
-   - Custom SVG cursor; on click/hover over interactive elements (buttons, cards), an SVG web-line draws and "sticks," then snaps back on release.
+   - Custom SVG cursor; on click/hover over interactive elements (buttons, cards, links), an SVG web-line draws and "sticks," then snaps back on release.
    - Desktop only (disabled on touch devices — no cursor concept on mobile).
 
-3. **Suit-Up Section Transitions**
-   - CSS/SVG `clip-path` mask-reveal transition between major sections (Hero → About → Projects → Contact).
+3. **Suit-Up Page Transitions**
+   - CSS/SVG `clip-path` mask-reveal transition between major pages (Home → About → Projects → Contact).
+   - Utilizes Next.js App Router template/layout animations for smooth cross-route transitions.
    - Duration capped at 400-600ms to avoid feeling slow.
 
 4. **Live Visitor Presence**
@@ -105,14 +106,14 @@ A single-page/multi-section developer portfolio website themed around Spider-Man
 
 ---
 
-## 6. Site Structure / Sections
+## 6. Site Structure / Pages
 
-1. **Hero** — Name, tagline ("Friendly Neighborhood Developer"), day/night synced background, loading sequence
-2. **About** — Bio, education (BCA, PSIT-CHE, CSJMU), suit-up transition into this section
-3. **Skills** — Tech stack visualization (React, Node, Express, MongoDB, etc.)
-4. **Projects** — Project cards (VeggieMart, YT-GENAI, Club Sphere, AI Interview Generator, etc.) with web-cursor interactions
-5. **Resume** — Fast, minimal-animation section/downloadable resume (recruiter fast-path)
-6. **Contact** — Contact form/links, live visitor presence indicator visible here
+1. **Home (`/`)** — Hero section with name, tagline ("Friendly Neighborhood Developer"), day/night synced background, and quick links to other pages.
+2. **About (`/about`)** — Bio, education (BCA, PSIT-CHE, CSJMU), and detailed background.
+3. **Skills (`/skills`)** — Tech stack visualization (React, Node, Express, MongoDB, etc.).
+4. **Projects (`/projects`)** — Project cards (VeggieMart, YT-GENAI, Club Sphere, AI Interview Generator, etc.) with web-cursor interactions.
+5. **Resume (`/resume`)** — Fast, minimal-animation page with downloadable resume (recruiter fast-path).
+6. **Contact (`/contact`)** — Contact form/links, live visitor presence indicator visible here.
 
 ---
 
@@ -135,8 +136,8 @@ A single-page/multi-section developer portfolio website themed around Spider-Man
 
 ## 9. Milestones (Suggested Build Order)
 
-1. Next.js scaffold + Tailwind/shadcn base + static content (all sections, no animation)
-2. GSAP scroll + suit-up transitions
+1. Next.js scaffold + Tailwind/shadcn base + static content across multiple routes (`/`, `/about`, etc., no animation)
+2. Next.js page transitions + GSAP suit-up transitions
 3. Rive/Lottie spider animations + loading sequence
 4. Web cursor interaction + spidey-sense hover states
 5. Supabase Realtime live presence
