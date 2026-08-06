@@ -1,28 +1,36 @@
-import SpideySense from "@/components/animations/SpideySense";
+import DailyBugleCard from "@/components/graphics/DailyBugleCard";
 
 const PROJECTS = [
   {
     title: "VeggieMart",
-    description: "An online marketplace for fresh organic produce with real-time inventory management.",
+    headline: "EXTRA! LOCAL DEVELOPER LAUNCHES ORGANIC PRODUCE MARKETPLACE!",
+    description: "An online marketplace for fresh organic produce with real-time inventory management and high-speed order processing.",
     tech: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+    issueNo: "NO. 1962",
     link: "#",
   },
   {
     title: "YT-GENAI",
-    description: "AI-powered tool that summarizes YouTube videos and generates actionable insights automatically.",
+    headline: "SPIDEY TECH REVEALS AI TOOL THAT SUMMARIZES YOUTUBE INSTANTLY!",
+    description: "AI-powered tool that automatically transcribes YouTube videos and generates actionable bullet summaries in seconds.",
     tech: ["Next.js", "OpenAI API", "Python", "FastAPI"],
+    issueNo: "NO. 2024",
     link: "#",
   },
   {
     title: "Club Sphere",
-    description: "Community platform for university clubs to manage events, announcements, and member engagement.",
+    headline: "CAMPUS ENGAGEMENT REVOLUTIONIZED BY NEW COMMUNITY PLATFORM!",
+    description: "Community platform for university clubs to manage live events, announcements, real-time messaging, and member rosters.",
     tech: ["React", "Express", "PostgreSQL", "Socket.io"],
+    issueNo: "NO. 301",
     link: "#",
   },
   {
     title: "AI Interview Generator",
-    description: "Intelligent platform simulating technical interviews with real-time voice feedback and scoring.",
+    headline: "INTELLIGENT SIMULATOR PREPARES DEVS FOR TECHNICAL INTERVIEWS!",
+    description: "Intelligent platform simulating real-time technical engineering interviews with voice feedback, scoring, and skill insights.",
     tech: ["Next.js", "Web Speech API", "Tailwind CSS", "Gemini API"],
+    issueNo: "NO. 404",
     link: "#",
   },
 ];
@@ -30,43 +38,31 @@ const PROJECTS = [
 export default function ProjectsPage() {
   return (
     <main className="min-h-screen pt-24 px-6 max-w-7xl mx-auto pb-16">
-      <h1 className="text-4xl md:text-6xl font-bold mb-4">Featured Projects</h1>
-      <p className="text-zinc-400 mb-12 max-w-2xl">
-        Here are some of the web applications and tools I've built. Hover over a card to activate spidey-sense!
-      </p>
+      <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 border-b border-zinc-800 pb-6">
+        <div>
+          <span className="text-red-500 font-mono text-xs font-bold tracking-widest uppercase mb-2 block">
+            DAILY BUGLE SPECIAL EDITION
+          </span>
+          <h1 className="text-4xl md:text-6xl font-serif font-black tracking-tight">
+            PROJECT <span className="text-red-600">HEADLINES</span>
+          </h1>
+        </div>
+        <p className="text-zinc-400 text-sm max-w-md mt-4 md:mt-0 font-mono">
+          Latest press releases on full-stack web applications and AI tools built by Aviral Mishra.
+        </p>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {PROJECTS.map((project, idx) => (
-          <SpideySense key={idx} glowColor={idx % 2 === 0 ? "red" : "blue"}>
-            <div className="bg-zinc-900/60 border border-white/10 rounded-xl p-6 h-full flex flex-col justify-between hover:border-white/20 transition-colors">
-              <div>
-                <h2 className="text-2xl font-bold mb-2 text-white">{project.title}</h2>
-                <p className="text-zinc-400 text-sm mb-6 leading-relaxed">
-                  {project.description}
-                </p>
-              </div>
-
-              <div>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-mono text-zinc-300"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <a
-                  href={project.link}
-                  className="inline-flex items-center text-sm font-medium text-red-500 hover:text-red-400"
-                >
-                  Explore Project &rarr;
-                </a>
-              </div>
-            </div>
-          </SpideySense>
+          <DailyBugleCard
+            key={idx}
+            title={project.title}
+            headline={project.headline}
+            description={project.description}
+            tech={project.tech}
+            issueNo={project.issueNo}
+            link={project.link}
+          />
         ))}
       </div>
     </main>

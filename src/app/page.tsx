@@ -13,20 +13,22 @@ export default function Home() {
 
       <div className="z-10 text-center px-6 max-w-5xl w-full flex flex-col items-center">
         {/* 3D React Three Fiber Web Scene */}
-        <SpiderCanvasWrapper />
+        <div data-gsap="3d-scene" className="w-full flex justify-center">
+          <SpiderCanvasWrapper />
+        </div>
 
-        <h1 className="text-5xl md:text-7xl font-black mb-4 tracking-tighter -mt-8">
+        <h1 data-gsap="title" className="text-5xl md:text-7xl font-black mb-4 tracking-tighter -mt-8">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">
             Aviral
           </span>{" "}
           Mishra
         </h1>
         
-        <p className="text-xl md:text-2xl text-zinc-400 font-medium mb-8 tracking-wide">
+        <p data-gsap="subtitle" className="text-xl md:text-2xl text-zinc-400 font-medium mb-8 tracking-wide">
           Your Friendly Neighborhood Developer
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
+        <div data-gsap="buttons" className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
           <SpideySense glowColor="red">
             <Link 
               href="/projects" 
