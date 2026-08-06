@@ -28,22 +28,13 @@ export default function Home() {
           Your Friendly Neighborhood Developer
         </p>
 
-        <div data-gsap="buttons" className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
+        <div data-gsap="buttons" className="flex items-center justify-center gap-4 mb-12">
           <SpideySense glowColor="red">
             <Link 
-              href="/projects" 
-              className="block w-full sm:w-auto px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-md transition-colors"
-            >
-              View Projects
-            </Link>
-          </SpideySense>
-
-          <SpideySense glowColor="blue">
-            <Link 
               href="/about" 
-              className="block w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-md transition-colors border border-white/10"
+              className="block w-full sm:w-auto px-9 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-all shadow-[0_0_25px_rgba(239,68,68,0.5)] text-lg"
             >
-              Suit Up (About Me)
+              🕷️ About Me
             </Link>
           </SpideySense>
         </div>

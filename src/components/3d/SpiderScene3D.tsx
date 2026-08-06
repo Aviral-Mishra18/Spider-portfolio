@@ -2,8 +2,17 @@
 
 import { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, MeshWobbleMaterial, OrbitControls } from "@react-three/drei";
+import { MeshWobbleMaterial, OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
+
+// Silence THREE.Clock deprecation warnings from third-party libraries in browser console
+if (typeof window !== "undefined") {
+  const originalWarn = console.warn;
+  console.warn = (...args: unknown[]) => {
+    if (typeof args[0] === "string" && args[0].includes("THREE.Clock")) return;
+    originalWarn(...args);
+  };
+}
 
 function WebParticles() {
   const count = 300;
@@ -60,26 +69,27 @@ function WebParticles() {
 
 function FloatingEmblem() {
   const meshRef = useRef<THREE.Mesh>(null!);
+  const timeRef = useRef(0);
 
   useFrame((_, delta) => {
     if (meshRef.current) {
+      timeRef.current += delta;
       meshRef.current.rotation.y += delta * 0.5;
+      meshRef.current.position.y = Math.sin(timeRef.current * 1.5) * 0.25;
     }
   });
 
   return (
-    <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
-      <mesh ref={meshRef}>
-        <octahedronGeometry args={[1.5, 0]} />
-        <MeshWobbleMaterial
-          color="#ef4444"
-          emissive="#7f1d1d"
-          factor={0.4}
-          speed={2}
-          wireframe
-        />
-      </mesh>
-    </Float>
+    <mesh ref={meshRef}>
+      <octahedronGeometry args={[1.5, 0]} />
+      <MeshWobbleMaterial
+        color="#ef4444"
+        emissive="#7f1d1d"
+        factor={0.4}
+        speed={2}
+        wireframe
+      />
+    </mesh>
   );
 }
 
