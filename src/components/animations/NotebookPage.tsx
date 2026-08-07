@@ -25,56 +25,19 @@ export default function NotebookPage() {
 
   return (
     <div className="w-full max-w-4xl mx-auto py-6 px-2 sm:px-4 font-sans relative">
-      {/* Tape overlays on top corners */}
-      <div className="absolute top-2 left-8 w-24 h-7 bg-white/10 backdrop-blur-md border border-white/20 -rotate-6 z-30 pointer-events-none shadow-sm rounded-sm" />
-      <div className="absolute top-2 right-8 w-24 h-7 bg-white/10 backdrop-blur-md border border-white/20 rotate-6 z-30 pointer-events-none shadow-sm rounded-sm" />
-
-      {/* Sheet Action Toggle Header */}
-      <div className="flex items-center justify-between mb-4 font-mono text-xs z-20 relative">
-        <div className="flex items-center gap-2">
-          <span className="px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
-            <FileText className="w-3.5 h-3.5" />
-            NOTEBOOK_SHEET_#01
-          </span>
-          <span className="text-zinc-500 hidden sm:inline">• Click corner or button to flip page</span>
+      {/* Centered Sheet Action Header */}
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mb-5 font-mono text-xs z-20 relative text-center">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 font-bold uppercase tracking-wider shadow-[0_0_15px_rgba(239,68,68,0.2)]">
+          <FileText className="w-3.5 h-3.5" />
+          <span>{activeSheet === "sideA" ? "NOTEBOOK_SHEET_#01 (SIDE A)" : "NOTEBOOK_SHEET_#02 (SIDE B)"}</span>
         </div>
-
-        <button
-          onClick={toggleSheet}
-          className="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white font-bold transition-all shadow-[0_0_15px_rgba(239,68,68,0.4)] flex items-center gap-2 cursor-pointer"
-        >
-          {activeSheet === "sideA" ? (
-            <>
-              <span>TURN TO SIDE B (SKILLS & PRINCIPLES)</span>
-              <ChevronRight className="w-4 h-4" />
-            </>
-          ) : (
-            <>
-              <ChevronLeft className="w-4 h-4" />
-              <span>FLIP TO SIDE A (ORIGIN STORY)</span>
-            </>
-          )}
-        </button>
+        <span className="text-zinc-400 font-mono text-[11px]">
+          • Click bottom corner fold to flip page
+        </span>
       </div>
 
       {/* Single Notebook Paper Sheet Container */}
       <div className="relative z-10 perspective-[1400px]">
-        {/* Spider-Man Character Perching Outside Notebook Page (Desktop & Tablet) */}
-        <div className="absolute -left-16 sm:-left-36 lg:-left-48 top-6 z-30 pointer-events-none hidden md:block">
-          <img
-            src="/img2.png"
-            alt="Spider-Man Perching"
-            className="w-48 sm:w-60 lg:w-72 h-auto object-contain drop-shadow-[0_15px_35px_rgba(239,68,68,0.5)] transform hover:scale-105 transition-transform"
-          />
-        </div>
-        {/* Spider-Man Character Perching Outside Notebook Page (Mobile) */}
-        <div className="absolute -top-14 -left-3 z-30 pointer-events-none md:hidden">
-          <img
-            src="/img2.png"
-            alt="Spider-Man Perching"
-            className="w-28 h-auto object-contain drop-shadow-[0_8px_20px_rgba(239,68,68,0.5)]"
-          />
-        </div>
         <AnimatePresence mode="wait">
           <motion.div
             key={activeSheet}
