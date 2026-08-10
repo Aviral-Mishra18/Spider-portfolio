@@ -2,15 +2,13 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { SKILLS_DATA, SkillItem } from "@/data/skillsData";
+import { SKILLS_DATA } from "@/data/skillsData";
 import SkillsWebGraph from "@/components/skills/SkillsWebGraph";
 import SpideySenseNode from "@/components/skills/SpideySenseNode";
 
-type ModeType = "comic" | "hud";
 type CategoryType = "all" | "frontend" | "backend" | "database" | "tools" | "special";
 
 export default function SkillsPage() {
-  const [mode, setMode] = useState<ModeType>("hud");
   const [selectedCategory, setSelectedCategory] = useState<CategoryType>("all");
   const [hoveredSkillId, setHoveredSkillId] = useState<string | null>(null);
   const [isCoreHovered, setIsCoreHovered] = useState<boolean>(false);
@@ -29,41 +27,22 @@ export default function SkillsPage() {
       {/* Page Header Section */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 relative z-10">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-600/10 border border-red-500/30 rounded-full text-red-400 font-mono text-xs font-semibold mb-3">
-            <span>🕸️ SPIDER-TECH ARSENAL</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-cyan-500/10 border border-cyan-400/30 rounded-full text-cyan-400 font-mono text-xs font-semibold mb-3 shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+            <span>🤖 STARK SUIT HUD // ACTIVE ARSENAL</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight uppercase font-serif">
-            WEB OF <span className="text-red-600">TECH STACK</span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight uppercase font-mono">
+            WEB OF <span className="text-cyan-400">TECH STACK</span>
           </h1>
           <p className="text-zinc-400 text-sm md:text-base max-w-xl mt-2 font-mono">
-            Interactive skill network connected to Spider-Dev Core Node. Hover over cards to trigger Spidey-Sense warning arcs and electric pulses!
+            Interactive skill telemetry connected to Spider-Dev Core. Hover over suit modules to trigger Spidey-Sense warning arcs and web fluid telemetry!
           </p>
         </div>
 
-        {/* Dual Mode Switcher Button */}
-        <div className="bg-zinc-900/90 border-2 border-zinc-800 p-1.5 rounded-2xl flex items-center gap-1 shadow-xl backdrop-blur-md self-start md:self-auto">
-          <button
-            onClick={() => setMode("comic")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all ${
-              mode === "comic"
-                ? "bg-red-600 text-white shadow-[0_0_20px_rgba(239,68,68,0.5)] scale-105"
-                : "text-zinc-400 hover:text-white"
-            }`}
-          >
-            <span>📰</span>
-            <span>COMIC MODE</span>
-          </button>
-          <button
-            onClick={() => setMode("hud")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all ${
-              mode === "hud"
-                ? "bg-cyan-500 text-zinc-950 shadow-[0_0_20px_rgba(6,182,212,0.5)] scale-105"
-                : "text-zinc-400 hover:text-white"
-            }`}
-          >
-            <span>🤖</span>
-            <span>STARK HUD MODE</span>
-          </button>
+        {/* Stark HUD Status Indicator */}
+        <div className="bg-cyan-950/60 border border-cyan-500/30 px-4 py-2.5 rounded-2xl flex items-center gap-3 shadow-xl backdrop-blur-md self-start md:self-auto font-mono text-xs text-cyan-300">
+          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span>HUD SYSTEMS: OPTIMAL</span>
         </div>
       </div>
 
@@ -88,9 +67,7 @@ export default function SkillsPage() {
             onClick={() => setSelectedCategory(cat.id as CategoryType)}
             className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all border ${
               selectedCategory === cat.id
-                ? mode === "comic"
-                  ? "bg-red-600/20 border-red-500 text-red-400 shadow-[0_0_15px_rgba(239,68,68,0.3)]"
-                  : "bg-cyan-500/20 border-cyan-400 text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.3)]"
+                ? "bg-cyan-500/20 border-cyan-400 text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.3)] scale-105"
                 : "bg-zinc-900/60 border-zinc-800 text-zinc-400 hover:border-zinc-700 hover:text-white"
             }`}
           >
@@ -106,7 +83,6 @@ export default function SkillsPage() {
             <SpideySenseNode
               key={skill.id}
               skill={skill}
-              mode={mode}
               isHovered={hoveredSkillId === skill.id || isCoreHovered}
               onHoverStart={() => setHoveredSkillId(skill.id)}
               onHoverEnd={() => setHoveredSkillId(null)}
