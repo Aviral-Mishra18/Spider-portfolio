@@ -19,30 +19,30 @@ export default function SkillsPage() {
   );
 
   return (
-    <main className="min-h-screen pt-28 pb-20 px-4 sm:px-6 max-w-7xl mx-auto relative overflow-hidden">
-      {/* Background Graphic Accents */}
-      <div className="absolute top-10 right-0 w-96 h-96 bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 left-0 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl pointer-events-none" />
+    <main className="min-h-screen pt-28 pb-20 px-4 sm:px-6 max-w-7xl mx-auto relative overflow-hidden bg-black text-white">
+      {/* Spider Red Background Glow Accents */}
+      <div className="absolute top-10 right-0 w-96 h-96 bg-red-600/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 left-0 w-96 h-96 bg-red-800/15 rounded-full blur-3xl pointer-events-none" />
 
       {/* Page Header Section */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 relative z-10">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-cyan-500/10 border border-cyan-400/30 rounded-full text-cyan-400 font-mono text-xs font-semibold mb-3 shadow-[0_0_15px_rgba(6,182,212,0.2)]">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
-            <span>🤖 STARK SUIT HUD // ACTIVE ARSENAL</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-600/10 border border-red-500/30 rounded-full text-red-400 font-mono text-xs font-semibold mb-3 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
+            <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
+            <span>🕸️ SPIDER ARSENAL // ACTIVE HUD</span>
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight uppercase font-mono">
-            WEB OF <span className="text-cyan-400">TECH STACK</span>
+            WEB OF <span className="text-red-600">TECH STACK</span>
           </h1>
           <p className="text-zinc-400 text-sm md:text-base max-w-xl mt-2 font-mono">
-            Interactive skill telemetry connected to Spider-Dev Core. Hover over suit modules to trigger Spidey-Sense warning arcs and web fluid telemetry!
+            Interactive tech telemetry connected to Spider-Dev Core Node. Hover over suit modules to trigger Spidey-Sense warning arcs and web fluid telemetry!
           </p>
         </div>
 
-        {/* Stark HUD Status Indicator */}
-        <div className="bg-cyan-950/60 border border-cyan-500/30 px-4 py-2.5 rounded-2xl flex items-center gap-3 shadow-xl backdrop-blur-md self-start md:self-auto font-mono text-xs text-cyan-300">
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-          <span>HUD SYSTEMS: OPTIMAL</span>
+        {/* Red & Black Status Indicator */}
+        <div className="bg-red-950/80 border border-red-600/40 px-4 py-2.5 rounded-2xl flex items-center gap-3 shadow-xl backdrop-blur-md self-start md:self-auto font-mono text-xs text-red-300">
+          <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse" />
+          <span>SUIT HUD: ONLINE</span>
         </div>
       </div>
 
@@ -67,8 +67,8 @@ export default function SkillsPage() {
             onClick={() => setSelectedCategory(cat.id as CategoryType)}
             className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all border ${
               selectedCategory === cat.id
-                ? "bg-cyan-500/20 border-cyan-400 text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.3)] scale-105"
-                : "bg-zinc-900/60 border-zinc-800 text-zinc-400 hover:border-zinc-700 hover:text-white"
+                ? "bg-red-600/20 border-red-500 text-red-400 shadow-[0_0_15px_rgba(239,68,68,0.35)] scale-105"
+                : "bg-zinc-900/80 border-zinc-800 text-zinc-400 hover:border-red-900/60 hover:text-white"
             }`}
           >
             {cat.label}

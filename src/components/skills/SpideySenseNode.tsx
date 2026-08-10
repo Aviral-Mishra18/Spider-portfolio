@@ -35,7 +35,7 @@ export default function SpideySenseNode({
       }}
       className="relative group cursor-pointer"
     >
-      {/* Spidey-Sense Warning Arcs (Radiates yellow/cyan glow lines when hovered) */}
+      {/* Spidey-Sense Warning Arcs (Radiates yellow/red glow lines when hovered) */}
       <AnimatePresence>
         {isHovered && (
           <>
@@ -45,11 +45,11 @@ export default function SpideySenseNode({
               animate={{ opacity: 1, scale: [1, 1.15, 1] }}
               exit={{ opacity: 0, scale: 0.5 }}
               transition={{ repeat: Infinity, duration: 0.8, ease: "easeInOut" }}
-              className="absolute -top-6 -left-6 w-12 h-12 pointer-events-none z-20 stroke-cyan-400 fill-none stroke-[2]"
+              className="absolute -top-6 -left-6 w-12 h-12 pointer-events-none z-20 stroke-amber-400 fill-none stroke-[2]"
               viewBox="0 0 50 50"
             >
               <path d="M 40 10 A 30 30 0 0 0 10 40" strokeDasharray="3 3" />
-              <path d="M 48 10 A 38 38 0 0 0 10 48" stroke="rgb(6, 182, 212)" strokeWidth="2.5" />
+              <path d="M 48 10 A 38 38 0 0 0 10 48" stroke="rgb(239, 68, 68)" strokeWidth="2.5" />
             </motion.svg>
 
             {/* Top-Right Arcs */}
@@ -68,18 +68,18 @@ export default function SpideySenseNode({
         )}
       </AnimatePresence>
 
-      {/* Stark HUD Cyber Card Frame */}
-      <div className="relative overflow-hidden rounded-2xl border-2 border-cyan-500/30 hover:border-cyan-400 bg-zinc-950/90 hover:shadow-[0_0_35px_rgba(6,182,212,0.4)] backdrop-blur-md transition-all duration-300">
-        {/* Stark Tech Cyber Corner Crosshairs */}
-        <div className="absolute top-1 left-1 w-2 h-2 border-t-2 border-l-2 border-cyan-400 opacity-60 group-hover:opacity-100 transition-opacity" />
-        <div className="absolute top-1 right-1 w-2 h-2 border-t-2 border-r-2 border-cyan-400 opacity-60 group-hover:opacity-100 transition-opacity" />
-        <div className="absolute bottom-1 left-1 w-2 h-2 border-b-2 border-l-2 border-cyan-400 opacity-60 group-hover:opacity-100 transition-opacity" />
-        <div className="absolute bottom-1 right-1 w-2 h-2 border-b-2 border-r-2 border-cyan-400 opacity-60 group-hover:opacity-100 transition-opacity" />
+      {/* Spider Red & Black Card Frame */}
+      <div className="relative overflow-hidden rounded-2xl border-2 border-red-600/40 hover:border-red-500 bg-zinc-950 hover:shadow-[0_0_35px_rgba(239,68,68,0.4)] backdrop-blur-md transition-all duration-300">
+        {/* Corner Crosshairs (Red Accent) */}
+        <div className="absolute top-1 left-1 w-2 h-2 border-t-2 border-l-2 border-red-500 opacity-60 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute top-1 right-1 w-2 h-2 border-t-2 border-r-2 border-red-500 opacity-60 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute bottom-1 left-1 w-2 h-2 border-b-2 border-l-2 border-red-500 opacity-60 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute bottom-1 right-1 w-2 h-2 border-b-2 border-r-2 border-red-500 opacity-60 group-hover:opacity-100 transition-opacity" />
 
         {/* Header Strip */}
-        <div className="px-4 py-2 flex items-center justify-between border-b bg-cyan-950/40 border-cyan-500/20">
-          <span className="text-[10px] font-mono font-bold tracking-wider uppercase text-cyan-400 flex items-center gap-1.5">
-            <span className={`w-2 h-2 rounded-full ${isHovered ? "bg-cyan-400 animate-ping" : "bg-cyan-600"}`} />
+        <div className="px-4 py-2 flex items-center justify-between border-b bg-red-950/40 border-red-600/30">
+          <span className="text-[10px] font-mono font-bold tracking-wider uppercase text-red-400 flex items-center gap-1.5">
+            <span className={`w-2 h-2 rounded-full ${isHovered ? "bg-red-500 animate-ping" : "bg-red-600"}`} />
             {skill.starkTelemetryCode}
           </span>
           <span className="text-[10px] font-mono text-zinc-400">{skill.experience}</span>
@@ -88,7 +88,7 @@ export default function SpideySenseNode({
         {/* Card Main Info */}
         <div className="p-5">
           <div className="flex items-center gap-3 mb-3">
-            <div className="text-3xl p-2 bg-cyan-950/60 border border-cyan-500/30 rounded-xl group-hover:scale-110 transition-transform">
+            <div className="text-3xl p-2 bg-red-950/50 border border-red-600/30 rounded-xl group-hover:scale-110 transition-transform">
               {skill.icon}
             </div>
             <div>
@@ -96,23 +96,23 @@ export default function SpideySenseNode({
                 {skill.name}
               </h4>
               <span className="text-xs font-mono text-zinc-400">
-                Level: <strong className="text-cyan-400">{skill.level}%</strong>
+                Level: <strong className="text-red-400">{skill.level}%</strong>
               </span>
             </div>
           </div>
 
           {/* Web Fluid Level Meter */}
-          <div className="mb-3 bg-zinc-900/90 border border-cyan-500/20 p-2 rounded-lg">
+          <div className="mb-3 bg-zinc-900 border border-red-600/20 p-2 rounded-lg">
             <div className="flex items-center justify-between text-[10px] font-mono text-zinc-300 mb-1">
               <span>🕸️ WEB FLUID CHARGE</span>
-              <span className="text-cyan-400 font-bold">{skill.level}%</span>
+              <span className="text-red-400 font-bold">{skill.level}%</span>
             </div>
-            <div className="w-full bg-zinc-950 h-2 rounded-full overflow-hidden border border-cyan-500/20 p-0.5">
+            <div className="w-full bg-zinc-950 h-2 rounded-full overflow-hidden border border-red-600/20 p-0.5">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${skill.level}%` }}
                 transition={{ duration: 1, ease: "easeOut" }}
-                className="h-full rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-red-500 shadow-[0_0_10px_rgba(6,182,212,0.8)]"
+                className="h-full rounded-full bg-gradient-to-r from-red-600 via-red-500 to-amber-500 shadow-[0_0_12px_rgba(239,68,68,0.8)]"
               />
             </div>
           </div>
@@ -127,7 +127,7 @@ export default function SpideySenseNode({
             {skill.projects.map((p, i) => (
               <span
                 key={i}
-                className="px-2 py-0.5 bg-cyan-950/50 border border-cyan-500/30 rounded text-[10px] font-mono text-cyan-200"
+                className="px-2 py-0.5 bg-red-950/40 border border-red-600/30 rounded text-[10px] font-mono text-red-200"
               >
                 SYS: {p}
               </span>
