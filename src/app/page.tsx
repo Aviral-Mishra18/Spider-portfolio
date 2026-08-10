@@ -24,8 +24,8 @@ export default function Home() {
           Mishra
         </h1>
         
-        <p data-gsap="subtitle" className="text-xl md:text-2xl text-zinc-400 font-medium mb-8 tracking-wide">
-          Your Friendly Neighborhood Developer
+        <p data-gsap="subtitle" className="text-xl md:text-2xl text-zinc-400 font-medium mb-8 tracking-wide font-mono uppercase">
+          FULL STACK DEVELOPER
         </p>
 
         <div data-gsap="buttons" className="flex items-center justify-center gap-4 mb-12">

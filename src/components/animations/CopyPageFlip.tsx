@@ -21,7 +21,7 @@ const PAGES = [
     id: "origin",
     tabLabel: "01 // ORIGIN",
     title: "DOSSIER: AVIRAL MISHRA",
-    subtitle: "Your Friendly Neighborhood Developer",
+    subtitle: "Full Stack Developer",
     stamp: "TOP SECRET",
     content: (
       <div className="space-y-6">

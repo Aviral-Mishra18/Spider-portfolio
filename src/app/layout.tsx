@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aviral Mishra | Friendly Neighborhood Developer",
+  title: "Aviral Mishra | Full Stack Developer",
   description: "Spider-Man themed developer portfolio of Aviral Mishra.",
 };
 
