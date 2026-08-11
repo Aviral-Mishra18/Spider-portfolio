@@ -9,6 +9,7 @@ const NAV_PAGES = [
   { name: "About", href: "/about" },
   { name: "Skills", href: "/skills" },
   { name: "Projects", href: "/projects" },
+  { name: "Triumphs", href: "/achievements" },
   { name: "Resume", href: "/resume" },
   { name: "Contact", href: "/contact" },
 ];
