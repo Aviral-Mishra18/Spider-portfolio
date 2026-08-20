@@ -128,3 +128,15 @@
     @apply font-sans;
   }
 }
+
+/* Custom Spider Cursor desktop visibility */
+html.custom-spider-cursor,
+html.custom-spider-cursor body,
+html.custom-spider-cursor a,
+html.custom-spider-cursor button,
+html.custom-spider-cursor [role="button"],
+html.custom-spider-cursor input,
+html.custom-spider-cursor select,
+html.custom-spider-cursor textarea {
+  cursor: none !important;
+}

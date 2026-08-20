@@ -14,14 +14,18 @@ interface SkillItem {
 }
 
 const SKILLS_DATA: SkillItem[] = [
-  { name: "React 19", level: "Expert", category: "Frontend", color: "#61dafb", pos: [-2.2, 1.2, 0.5] },
-  { name: "Next.js 16", level: "Expert", category: "Framework", color: "#ffffff", pos: [0, 1.8, -0.5] },
-  { name: "TypeScript", level: "Advanced", category: "Language", color: "#3178c6", pos: [2.2, 1.2, 0.5] },
-  { name: "Three.js", level: "Intermediate", category: "3D Graphics", color: "#ef4444", pos: [-2.5, -1.0, -0.2] },
-  { name: "GSAP", level: "Advanced", category: "Animations", color: "#88ce02", pos: [2.5, -1.0, -0.2] },
-  { name: "Tailwind CSS", level: "Expert", category: "Styling", color: "#38bdf8", pos: [0, -1.8, 0.8] },
-  { name: "Node.js", level: "Advanced", category: "Backend", color: "#22c55e", pos: [-1.2, 0.1, 1.2] },
-  { name: "Supabase", level: "Intermediate", category: "Database", color: "#3ecf8e", pos: [1.2, 0.1, 1.2] },
+  { name: "Next.js", level: "Expert", category: "Frontend", color: "#ef4444", pos: [0, 1.8, -0.5] },
+  { name: "React.js", level: "Expert", category: "Frontend", color: "#61dafb", pos: [-2.2, 1.2, 0.5] },
+  { name: "JavaScript", level: "Expert", category: "Frontend", color: "#f7df1e", pos: [2.2, 1.2, 0.5] },
+  { name: "HTML5", level: "Expert", category: "Frontend", color: "#e34f26", pos: [-2.2, -0.4, -0.2] },
+  { name: "CSS3", level: "Expert", category: "Frontend", color: "#1572b6", pos: [2.2, -0.4, -0.2] },
+  { name: "GSAP & Motion", level: "Advanced", category: "Frontend", color: "#f43f5e", pos: [-1.4, 0.2, 1.2] },
+  { name: "Node.js", level: "Advanced", category: "Backend", color: "#22c55e", pos: [1.4, 0.2, 1.2] },
+  { name: "Express.js", level: "Advanced", category: "Backend", color: "#a855f7", pos: [-1.8, -1.4, 0.2] },
+  { name: "MongoDB", level: "Advanced", category: "Database", color: "#10b981", pos: [-0.6, -1.8, 0.8] },
+  { name: "Supabase", level: "Advanced", category: "Database", color: "#3ecf8e", pos: [0.6, -1.8, 0.8] },
+  { name: "Python", level: "Advanced", category: "Language", color: "#eab308", pos: [1.8, -1.4, 0.2] },
+  { name: "C++", level: "Advanced", category: "Language", color: "#00599c", pos: [0, -0.8, -1.2] },
 ];
 
 function SkillNode({

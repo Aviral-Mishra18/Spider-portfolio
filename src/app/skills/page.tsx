@@ -6,7 +6,7 @@ import { SKILLS_DATA } from "@/data/skillsData";
 import SkillsWebGraph from "@/components/skills/SkillsWebGraph";
 import SpideySenseNode from "@/components/skills/SpideySenseNode";
 
-type CategoryType = "all" | "frontend" | "backend" | "database" | "tools" | "special";
+type CategoryType = "all" | "frontend" | "backend" | "database" | "languages";
 
 export default function SkillsPage() {
   const [selectedCategory, setSelectedCategory] = useState<CategoryType>("all");
@@ -59,8 +59,7 @@ export default function SkillsPage() {
           { id: "frontend", label: "FRONTEND TECH" },
           { id: "backend", label: "BACKEND & API" },
           { id: "database", label: "DATABASES & CLOUD" },
-          { id: "tools", label: "TOOLS & DEVOPS" },
-          { id: "special", label: "SPECIAL WEAPONS" },
+          { id: "languages", label: "PROGRAMMING LANGUAGES" },
         ].map((cat) => (
           <button
             key={cat.id}

@@ -2,6 +2,14 @@ import DailyBugleCard from "@/components/graphics/DailyBugleCard";
 
 const PROJECTS = [
   {
+    title: "Vionex AI - Developer Workspace",
+    headline: "EXTRA! VIONEX AI LAUNCHES: NEXT-GEN AI DEVELOPER WORKSPACE & COLLABORATION HUB!",
+    description: "Enterprise-grade AI workspace featuring sub-second streaming Llama-3.3-70B chat, automated code security reviews, AI technical documentation generator, Kanban drag-and-drop task tracking, and multi-tenant Supabase PostgreSQL architecture.",
+    tech: ["Next.js 16", "React 19", "Groq AI (Llama 3.3)", "Supabase", "PostgreSQL (RLS)", "Tailwind CSS v4", "TypeScript"],
+    issueNo: "NO. 2026 // SPECIAL",
+    link: "https://github.com/Aviral-Mishra18/AI-Developer-Workspace",
+  },
+  {
     title: "VeggieMart",
     headline: "EXTRA! LOCAL DEVELOPER LAUNCHES ORGANIC PRODUCE MARKETPLACE!",
     description: "An online marketplace for fresh organic produce with real-time inventory management and high-speed order processing.",
