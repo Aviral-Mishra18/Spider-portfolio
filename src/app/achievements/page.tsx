@@ -22,9 +22,10 @@ import TriumphWebNetwork from "@/components/triumph/TriumphWebNetwork";
 
 const CATEGORIES = [
   { id: "all", label: "All Feats" },
-  { id: "triumphs", label: "Triumphs (Achievements)" },
-  { id: "activities", label: "Heroic Activities" },
+  { id: "triumphs", label: "Achievements & Triumphs" },
   { id: "certifications", label: "Certifications" },
+  { id: "seminars", label: "Seminars & Workshops" },
+  { id: "activities", label: "Club & Leadership" },
 ];
 
 export default function AchievementsPage() {
@@ -109,8 +110,9 @@ export default function AchievementsPage() {
             >
               {cat.id === "all" && <Layers className="w-3.5 h-3.5" />}
               {cat.id === "triumphs" && <Trophy className="w-3.5 h-3.5 text-amber-400" />}
-              {cat.id === "activities" && <Flame className="w-3.5 h-3.5 text-red-400" />}
               {cat.id === "certifications" && <Award className="w-3.5 h-3.5 text-blue-400" />}
+              {cat.id === "seminars" && <Star className="w-3.5 h-3.5 text-cyan-400" />}
+              {cat.id === "activities" && <Flame className="w-3.5 h-3.5 text-red-400" />}
               <span>{cat.label}</span>
             </button>
           );

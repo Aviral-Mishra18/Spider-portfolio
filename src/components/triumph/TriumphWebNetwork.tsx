@@ -444,6 +444,8 @@ export default function TriumphWebNetwork({
                           ? "bg-amber-400 shadow-[0_0_8px_#f59e0b]"
                           : node.category === "activities"
                           ? "bg-red-500 shadow-[0_0_8px_#ef4444]"
+                          : node.category === "seminars"
+                          ? "bg-cyan-400 shadow-[0_0_8px_#22d3ee]"
                           : "bg-blue-500 shadow-[0_0_8px_#3b82f6]"
                       }`}
                     />

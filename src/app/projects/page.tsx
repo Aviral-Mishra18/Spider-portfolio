@@ -2,43 +2,19 @@ import DailyBugleCard from "@/components/graphics/DailyBugleCard";
 
 const PROJECTS = [
   {
-    title: "Vionex AI - Developer Workspace",
-    headline: "EXTRA! VIONEX AI LAUNCHES: NEXT-GEN AI DEVELOPER WORKSPACE & COLLABORATION HUB!",
-    description: "Enterprise-grade AI workspace featuring sub-second streaming Llama-3.3-70B chat, automated code security reviews, AI technical documentation generator, Kanban drag-and-drop task tracking, and multi-tenant Supabase PostgreSQL architecture.",
-    tech: ["Next.js 16", "React 19", "Groq AI (Llama 3.3)", "Supabase", "PostgreSQL (RLS)", "Tailwind CSS v4", "TypeScript"],
-    issueNo: "NO. 2026 // SPECIAL",
+    title: "AI-Powered Developer Workspace",
+    headline: "VIONEX AI",
+    description: "Enterprise-grade AI-powered developer workspace featuring real-time project management, Kanban task tracking, and AI-driven code review. Integrated Groq LLM (llama-3.3-70b) via Vercel AI SDK for streaming AI chat assistance and automated technical documentation. Designed a multi-tenant PostgreSQL schema on Supabase with Row Level Security (RLS), roles, and 24+ relational tables.",
+    tech: ["Next.js", "React", "TypeScript", "Supabase", "PostgreSQL (RLS)", "Groq AI SDK (Llama-3.3)", "Tailwind CSS"],
+    issueNo: "NO. 2026 // PERSONAL PROJECT",
     link: "https://github.com/Aviral-Mishra18/AI-Developer-Workspace",
   },
   {
-    title: "VeggieMart",
-    headline: "EXTRA! LOCAL DEVELOPER LAUNCHES ORGANIC PRODUCE MARKETPLACE!",
-    description: "An online marketplace for fresh organic produce with real-time inventory management and high-speed order processing.",
-    tech: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
-    issueNo: "NO. 1962",
-    link: "#",
-  },
-  {
-    title: "YT-GENAI",
-    headline: "SPIDEY TECH REVEALS AI TOOL THAT SUMMARIZES YOUTUBE INSTANTLY!",
-    description: "AI-powered tool that automatically transcribes YouTube videos and generates actionable bullet summaries in seconds.",
-    tech: ["Next.js", "OpenAI API", "Python", "FastAPI"],
-    issueNo: "NO. 2024",
-    link: "#",
-  },
-  {
-    title: "Club Sphere",
-    headline: "CAMPUS ENGAGEMENT REVOLUTIONIZED BY NEW COMMUNITY PLATFORM!",
-    description: "Community platform for university clubs to manage live events, announcements, real-time messaging, and member rosters.",
-    tech: ["React", "Express", "PostgreSQL", "Socket.io"],
-    issueNo: "NO. 301",
-    link: "#",
-  },
-  {
-    title: "AI Interview Generator",
-    headline: "INTELLIGENT SIMULATOR PREPARES DEVS FOR TECHNICAL INTERVIEWS!",
-    description: "Intelligent platform simulating real-time technical engineering interviews with voice feedback, scoring, and skill insights.",
-    tech: ["Next.js", "Web Speech API", "Tailwind CSS", "Gemini API"],
-    issueNo: "NO. 404",
+    title: "Collaborative Campus Platform",
+    headline: "CLUB SPHERE",
+    description: "Collaborated with peers to design and develop a collaborative full-stack web platform for managing college club activities. Built responsive UI components using React.js and Tailwind CSS with focus on clean user experience. Implemented JWT-based authentication and managed end-to-end frontend delivery.",
+    tech: ["React.js", "Node.js", "Express", "MongoDB (Atlas)", "JWT", "Tailwind CSS"],
+    issueNo: "NO. 2024 // TEAM PROJECT",
     link: "#",
   },
 ];
@@ -49,14 +25,14 @@ export default function ProjectsPage() {
       <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 border-b border-zinc-800 pb-6">
         <div>
           <span className="text-red-500 font-mono text-xs font-bold tracking-widest uppercase mb-2 block">
-            DAILY BUGLE SPECIAL EDITION
+            DAILY BUGLE SPECIAL EDITION // PROJECT DOSSIER
           </span>
-          <h1 className="text-4xl md:text-6xl font-serif font-black tracking-tight">
+          <h1 className="text-4xl md:text-6xl font-serif font-black tracking-tight text-white">
             PROJECT <span className="text-red-600">HEADLINES</span>
           </h1>
         </div>
         <p className="text-zinc-400 text-sm max-w-md mt-4 md:mt-0 font-mono">
-          Latest press releases on full-stack web applications and AI tools built by Aviral Mishra.
+          Featured full-stack and AI-driven applications built and delivered by Aviral Mishra.
         </p>
       </div>
 
