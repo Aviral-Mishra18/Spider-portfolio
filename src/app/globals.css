@@ -129,14 +129,10 @@
   }
 }
 
-/* Custom Spider Cursor desktop visibility */
+/* Custom Spider Cursor desktop visibility - hide all native cursors globally when custom cursor is active */
 html.custom-spider-cursor,
-html.custom-spider-cursor body,
-html.custom-spider-cursor a,
-html.custom-spider-cursor button,
-html.custom-spider-cursor [role="button"],
-html.custom-spider-cursor input,
-html.custom-spider-cursor select,
-html.custom-spider-cursor textarea {
+html.custom-spider-cursor *,
+html.custom-spider-cursor *::before,
+html.custom-spider-cursor *::after {
   cursor: none !important;
 }
