@@ -57,41 +57,51 @@ export default function ResumePage() {
   };
 
   return (
-    <main className="min-h-screen pt-24 pb-20 px-4 sm:px-6 max-w-5xl mx-auto text-white relative font-sans">
-      {/* Background Atmosphere Glows */}
+    <main className="min-h-screen pt-20 sm:pt-24 pb-16 sm:pb-20 px-3 sm:px-6 max-w-5xl mx-auto text-white relative font-sans">
+      {/* Lightweight Ambient Glows using CSS radial gradients */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden print:hidden">
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-red-600/10 rounded-full blur-[140px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[140px]" />
+        <div
+          className="absolute top-1/4 left-1/4 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] rounded-full pointer-events-none"
+          style={{
+            background: "radial-gradient(circle, rgba(239,68,68,0.1) 0%, transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute bottom-1/4 right-1/4 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] rounded-full pointer-events-none"
+          style={{
+            background: "radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%)",
+          }}
+        />
       </div>
 
       {/* Action Header Bar (Screen only) */}
-      <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 border-b border-zinc-800 pb-6 print:hidden">
+      <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 sm:mb-8 border-b border-zinc-800 pb-5 sm:pb-6 print:hidden">
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-500/10 border border-red-500/30 rounded-full text-red-400 font-mono text-xs uppercase tracking-widest mb-2 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
-            <Sparkles className="w-3.5 h-3.5 text-red-500 animate-spin-slow" />
-            <span>CONFIDENTIAL // VERIFIED CURRICULUM VITAE</span>
+            <Sparkles className="w-3.5 h-3.5 text-red-500 animate-spin-slow shrink-0" />
+            <span className="truncate">CONFIDENTIAL // VERIFIED CURRICULUM VITAE</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-black font-mono tracking-tight text-white">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-black font-mono tracking-tight text-white">
             AVIRAL <span className="text-red-600">MISHRA</span>
           </h1>
-          <p className="text-zinc-400 text-sm font-mono mt-1">
+          <p className="text-zinc-400 text-xs sm:text-sm font-mono mt-1">
             Full-Stack Developer • TypeScript, Next.js & AI Systems Engineer
           </p>
         </div>
 
-        <div className="flex items-center gap-3 flex-wrap">
+        <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap w-full sm:w-auto">
           <button
             onClick={handlePrint}
-            className="px-4 py-2.5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 hover:border-zinc-500 text-zinc-200 font-mono font-bold text-xs rounded-xl transition-all flex items-center gap-2 shadow-md cursor-pointer"
+            className="flex-1 sm:flex-initial px-3.5 sm:px-4 py-2.5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 hover:border-zinc-500 text-zinc-200 font-mono font-bold text-xs rounded-xl transition-all flex items-center justify-center gap-2 shadow-md cursor-pointer"
           >
             <Printer className="w-4 h-4 text-zinc-400" />
-            <span>PRINT / SAVE PDF</span>
+            <span>PRINT / PDF</span>
           </button>
 
           <a
             href="/resume.pdf"
             download="Aviral_Mishra_Resume.pdf"
-            className="px-5 py-2.5 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-mono font-bold text-xs rounded-xl transition-all shadow-[0_0_20px_rgba(239,68,68,0.4)] flex items-center gap-2"
+            className="flex-1 sm:flex-initial px-4 sm:px-5 py-2.5 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-mono font-bold text-xs rounded-xl transition-all shadow-[0_0_20px_rgba(239,68,68,0.4)] flex items-center justify-center gap-2"
           >
             <Download className="w-4 h-4" />
             <span>DOWNLOAD CV</span>
@@ -100,28 +110,28 @@ export default function ResumePage() {
       </div>
 
       {/* Main Resume Canvas Container */}
-      <div className="relative z-10 bg-zinc-950/90 border border-zinc-800 rounded-2xl p-6 sm:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] backdrop-blur-xl space-y-10 print:bg-white print:text-black print:p-0 print:border-none print:shadow-none">
+      <div className="relative z-10 bg-zinc-950/90 border border-zinc-800 rounded-2xl p-4 sm:p-8 md:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] backdrop-blur-xl space-y-8 sm:space-y-10 print:bg-white print:text-black print:p-0 print:border-none print:shadow-none">
         
         {/* ================= HEADER SECTION ================= */}
-        <header className="border-b border-zinc-800 pb-8 print:border-black/20 print:pb-4">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <header className="border-b border-zinc-800 pb-6 sm:pb-8 print:border-black/20 print:pb-4">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 sm:gap-4">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white print:text-black">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white print:text-black">
                 Aviral Mishra
               </h2>
-              <p className="text-red-400 font-mono text-sm sm:text-base font-semibold mt-1 print:text-red-700">
+              <p className="text-red-400 font-mono text-xs sm:text-sm md:text-base font-semibold mt-1 print:text-red-700">
                 Full-Stack Developer • Next.js, React & AI Systems
               </p>
             </div>
 
-            <div className="flex items-center gap-2 text-xs font-mono text-zinc-400 print:text-zinc-700">
-              <MapPin className="w-4 h-4 text-red-500 print:text-red-700" />
+            <div className="flex items-center gap-1.5 sm:gap-2 text-xs font-mono text-zinc-400 print:text-zinc-700">
+              <MapPin className="w-4 h-4 text-red-500 print:text-red-700 shrink-0" />
               <span>Kanpur, India</span>
             </div>
           </div>
 
           {/* Contact Pills / Links */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 mt-6 font-mono text-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3 mt-5 sm:mt-6 font-mono text-xs">
             {/* Phone */}
             <div 
               onClick={() => copyToClipboard("9170252358", "phone")}
@@ -185,70 +195,70 @@ export default function ResumePage() {
         </header>
 
         {/* ================= CAREER OBJECTIVE ================= */}
-        <section className="space-y-3">
+        <section className="space-y-2.5 sm:space-y-3">
           <div className="flex items-center gap-2 text-xs font-mono text-red-400 font-bold uppercase tracking-wider print:text-red-700">
-            <Terminal className="w-4 h-4" />
+            <Terminal className="w-4 h-4 shrink-0" />
             <span>CAREER OBJECTIVE</span>
           </div>
-          <p className="text-zinc-300 text-sm sm:text-base leading-relaxed bg-zinc-900/40 p-4 rounded-xl border border-zinc-800/80 print:bg-transparent print:p-0 print:border-none print:text-black">
+          <p className="text-zinc-300 text-xs sm:text-sm md:text-base leading-relaxed bg-zinc-900/40 p-3.5 sm:p-4 rounded-xl border border-zinc-800/80 print:bg-transparent print:p-0 print:border-none print:text-black">
             BCA student skilled in <strong className="text-white print:text-black">TypeScript, Next.js, and React.js</strong>, with hands-on experience integrating AI-driven APIs into real-world projects. A quick learner with strong problem-solving skills, seeking to contribute effectively in a professional development environment.
           </p>
         </section>
 
         {/* ================= TECHNICAL SKILLS ================= */}
-        <section className="space-y-4">
+        <section className="space-y-3 sm:space-y-4">
           <div className="flex items-center gap-2 text-xs font-mono text-red-400 font-bold uppercase tracking-wider print:text-red-700">
-            <Code2 className="w-4 h-4" />
+            <Code2 className="w-4 h-4 shrink-0" />
             <span>TECHNICAL SKILLS</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs font-mono">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 sm:gap-3 text-xs font-mono">
             {/* Languages */}
-            <div className="p-3.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 print:bg-zinc-50 print:border-zinc-300">
+            <div className="p-3 sm:p-3.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 print:bg-zinc-50 print:border-zinc-300">
               <span className="text-red-400 font-bold block mb-1 uppercase print:text-red-700">
                 Languages:
               </span>
-              <span className="text-zinc-200 print:text-black font-sans text-sm">
+              <span className="text-zinc-200 print:text-black font-sans text-xs sm:text-sm">
                 C, C++, Python, JavaScript, TypeScript
               </span>
             </div>
 
             {/* Frontend */}
-            <div className="p-3.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 print:bg-zinc-50 print:border-zinc-300">
+            <div className="p-3 sm:p-3.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 print:bg-zinc-50 print:border-zinc-300">
               <span className="text-blue-400 font-bold block mb-1 uppercase print:text-blue-700">
                 Frontend:
               </span>
-              <span className="text-zinc-200 print:text-black font-sans text-sm">
+              <span className="text-zinc-200 print:text-black font-sans text-xs sm:text-sm">
                 HTML5, CSS3, React.js, Next.js, Tailwind CSS
               </span>
             </div>
 
             {/* Backend & Database */}
-            <div className="p-3.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 print:bg-zinc-50 print:border-zinc-300">
+            <div className="p-3 sm:p-3.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 print:bg-zinc-50 print:border-zinc-300">
               <span className="text-emerald-400 font-bold block mb-1 uppercase print:text-emerald-700">
                 Backend & Database:
               </span>
-              <span className="text-zinc-200 print:text-black font-sans text-sm">
+              <span className="text-zinc-200 print:text-black font-sans text-xs sm:text-sm">
                 Node.js, Express, MongoDB (Atlas), Supabase (PostgreSQL)
               </span>
             </div>
 
             {/* Tools & Libraries */}
-            <div className="p-3.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 print:bg-zinc-50 print:border-zinc-300">
+            <div className="p-3 sm:p-3.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 print:bg-zinc-50 print:border-zinc-300">
               <span className="text-amber-400 font-bold block mb-1 uppercase print:text-amber-700">
                 Tools & Libraries:
               </span>
-              <span className="text-zinc-200 print:text-black font-sans text-sm">
+              <span className="text-zinc-200 print:text-black font-sans text-xs sm:text-sm">
                 GitHub, VS Code, Vercel, Supabase, Chart.js, Recharts
               </span>
             </div>
 
             {/* Soft Skills */}
-            <div className="p-3.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 md:col-span-2 print:bg-zinc-50 print:border-zinc-300">
+            <div className="p-3 sm:p-3.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 md:col-span-2 print:bg-zinc-50 print:border-zinc-300">
               <span className="text-purple-400 font-bold block mb-1 uppercase print:text-purple-700">
                 Soft Skills:
               </span>
-              <span className="text-zinc-200 print:text-black font-sans text-sm">
+              <span className="text-zinc-200 print:text-black font-sans text-xs sm:text-sm">
                 Communication, Teamwork, Problem Solving, Time Management
               </span>
             </div>
@@ -256,82 +266,82 @@ export default function ResumePage() {
         </section>
 
         {/* ================= PROJECTS ================= */}
-        <section className="space-y-6">
+        <section className="space-y-4 sm:space-y-6">
           <div className="flex items-center gap-2 text-xs font-mono text-red-400 font-bold uppercase tracking-wider print:text-red-700">
-            <Briefcase className="w-4 h-4" />
+            <Briefcase className="w-4 h-4 shrink-0" />
             <span>PROJECTS</span>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {/* Project 1: Club Sphere */}
-            <div className="p-5 rounded-2xl bg-zinc-900/50 border border-zinc-800 space-y-3 print:bg-transparent print:p-0 print:border-b print:border-zinc-300 print:pb-4">
+            <div className="p-4 sm:p-5 rounded-2xl bg-zinc-900/50 border border-zinc-800 space-y-2.5 sm:space-y-3 print:bg-transparent print:p-0 print:border-b print:border-zinc-300 print:pb-4">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1">
                 <div>
-                  <h3 className="text-lg font-bold text-white print:text-black">
+                  <h3 className="text-base sm:text-lg font-bold text-white print:text-black">
                     Club Sphere
                   </h3>
-                  <p className="text-xs font-mono text-red-400 print:text-red-700">
+                  <p className="text-[11px] sm:text-xs font-mono text-red-400 print:text-red-700">
                     React.js, Node.js, Express, MongoDB, JWT
                   </p>
                 </div>
-                <div className="text-right">
-                  <span className="text-xs font-mono text-zinc-400 print:text-zinc-700 block">
+                <div className="text-left sm:text-right">
+                  <span className="text-[11px] sm:text-xs font-mono text-zinc-400 print:text-zinc-700 block">
                     2024 – Present
                   </span>
-                  <span className="text-[10px] font-mono uppercase bg-zinc-950 px-2 py-0.5 rounded border border-zinc-800 text-zinc-300 print:bg-zinc-200 print:text-black">
+                  <span className="text-[9px] sm:text-[10px] font-mono uppercase bg-zinc-950 px-2 py-0.5 rounded border border-zinc-800 text-zinc-300 print:bg-zinc-200 print:text-black">
                     Team Project
                   </span>
                 </div>
               </div>
 
-              <ul className="space-y-2 text-xs sm:text-sm text-zinc-300 font-sans list-none print:text-black">
+              <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-zinc-300 font-sans list-none print:text-black">
                 <li className="flex items-start gap-2">
-                  <span className="text-red-500 print:text-black font-bold">•</span>
+                  <span className="text-red-500 print:text-black font-bold shrink-0">•</span>
                   <span>Collaborated with peers to design and develop a collaborative platform for managing college club activities.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-red-500 print:text-black font-bold">•</span>
+                  <span className="text-red-500 print:text-black font-bold shrink-0">•</span>
                   <span>Built responsive UI components using React.js and Tailwind CSS with focus on clean user experience.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-red-500 print:text-black font-bold">•</span>
+                  <span className="text-red-500 print:text-black font-bold shrink-0">•</span>
                   <span>Implemented JWT-based authentication and managed end-to-end frontend delivery.</span>
                 </li>
               </ul>
             </div>
 
             {/* Project 2: Vionex AI */}
-            <div className="p-5 rounded-2xl bg-zinc-900/50 border border-zinc-800 space-y-3 print:bg-transparent print:p-0 print:border-b print:border-zinc-300 print:pb-4">
+            <div className="p-4 sm:p-5 rounded-2xl bg-zinc-900/50 border border-zinc-800 space-y-2.5 sm:space-y-3 print:bg-transparent print:p-0 print:border-b print:border-zinc-300 print:pb-4">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1">
                 <div>
-                  <h3 className="text-lg font-bold text-white print:text-black">
+                  <h3 className="text-base sm:text-lg font-bold text-white print:text-black">
                     Vionex AI – AI-Powered Developer Workspace
                   </h3>
-                  <p className="text-xs font-mono text-blue-400 print:text-blue-700">
+                  <p className="text-[11px] sm:text-xs font-mono text-blue-400 print:text-blue-700">
                     Next.js, React, TypeScript, Supabase, Groq AI SDK, Tailwind CSS
                   </p>
                 </div>
-                <div className="text-right">
-                  <span className="text-xs font-mono text-zinc-400 print:text-zinc-700 block">
+                <div className="text-left sm:text-right">
+                  <span className="text-[11px] sm:text-xs font-mono text-zinc-400 print:text-zinc-700 block">
                     2026 – Present
                   </span>
-                  <span className="text-[10px] font-mono uppercase bg-zinc-950 px-2 py-0.5 rounded border border-zinc-800 text-zinc-300 print:bg-zinc-200 print:text-black">
+                  <span className="text-[9px] sm:text-[10px] font-mono uppercase bg-zinc-950 px-2 py-0.5 rounded border border-zinc-800 text-zinc-300 print:bg-zinc-200 print:text-black">
                     Personal Project
                   </span>
                 </div>
               </div>
 
-              <ul className="space-y-2 text-xs sm:text-sm text-zinc-300 font-sans list-none print:text-black">
+              <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-zinc-300 font-sans list-none print:text-black">
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-500 print:text-black font-bold">•</span>
+                  <span className="text-blue-500 print:text-black font-bold shrink-0">•</span>
                   <span>Built an enterprise-grade AI-powered developer workspace with real-time project management, Kanban task tracking, and AI-driven code review.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-500 print:text-black font-bold">•</span>
+                  <span className="text-blue-500 print:text-black font-bold shrink-0">•</span>
                   <span>Integrated Groq LLM (llama-3.3-70b) via Vercel AI SDK for streaming AI chat assistance and automated documentation generation.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-500 print:text-black font-bold">•</span>
+                  <span className="text-blue-500 print:text-black font-bold shrink-0">•</span>
                   <span>Designed a multi-tenant PostgreSQL schema on Supabase with Row Level Security (RLS), roles, and 24+ relational tables.</span>
                 </li>
               </ul>
@@ -340,84 +350,84 @@ export default function ResumePage() {
         </section>
 
         {/* ================= EDUCATION ================= */}
-        <section className="space-y-4">
+        <section className="space-y-3 sm:space-y-4">
           <div className="flex items-center gap-2 text-xs font-mono text-red-400 font-bold uppercase tracking-wider print:text-red-700">
-            <GraduationCap className="w-4 h-4" />
+            <GraduationCap className="w-4 h-4 shrink-0" />
             <span>EDUCATION</span>
           </div>
 
-          <div className="space-y-3 font-mono text-xs">
+          <div className="space-y-2.5 sm:space-y-3 font-mono text-xs">
             {/* PSIT-CHE */}
-            <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 print:bg-transparent print:border-none print:p-0">
+            <div className="p-3.5 sm:p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 print:bg-transparent print:border-none print:p-0">
               <div>
-                <h4 className="text-sm font-bold text-white font-sans print:text-black">
+                <h4 className="text-xs sm:text-sm font-bold text-white font-sans print:text-black">
                   PSIT College of Higher Education (PSIT-CHE), CSJMU
                 </h4>
-                <p className="text-xs text-red-400 font-mono print:text-red-700">
+                <p className="text-[11px] sm:text-xs text-red-400 font-mono print:text-red-700">
                   Bachelor of Computer Applications (B.C.A.)
                 </p>
               </div>
-              <div className="text-right sm:text-right">
-                <span className="text-zinc-300 font-bold block print:text-black">
+              <div className="text-left sm:text-right">
+                <span className="text-zinc-300 font-bold block print:text-black text-[11px] sm:text-xs">
                   2024 – 2027 (Pursuing)
                 </span>
-                <span className="text-[11px] text-zinc-500 print:text-zinc-700">
+                <span className="text-[10px] sm:text-[11px] text-zinc-500 print:text-zinc-700">
                   Kanpur, India
                 </span>
               </div>
             </div>
 
             {/* 12th Grade */}
-            <div className="p-4 rounded-xl bg-zinc-900/40 border border-zinc-800/80 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 print:bg-transparent print:border-none print:p-0">
+            <div className="p-3.5 sm:p-4 rounded-xl bg-zinc-900/40 border border-zinc-800/80 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 print:bg-transparent print:border-none print:p-0">
               <div>
-                <h4 className="text-sm font-semibold text-zinc-200 font-sans print:text-black">
+                <h4 className="text-xs sm:text-sm font-semibold text-zinc-200 font-sans print:text-black">
                   Kanya Kubja Public School, CBSE
                 </h4>
-                <p className="text-xs text-zinc-400 font-mono print:text-zinc-600">
+                <p className="text-[11px] sm:text-xs text-zinc-400 font-mono print:text-zinc-600">
                   Intermediate (12th Grade)
                 </p>
               </div>
-              <div className="text-right sm:text-right">
-                <span className="text-zinc-300 block print:text-black">2024</span>
-                <span className="text-[11px] text-zinc-500 print:text-zinc-700">Kanpur, India</span>
+              <div className="text-left sm:text-right">
+                <span className="text-zinc-300 block print:text-black text-[11px] sm:text-xs">2024</span>
+                <span className="text-[10px] sm:text-[11px] text-zinc-500 print:text-zinc-700">Kanpur, India</span>
               </div>
             </div>
 
             {/* 10th Grade */}
-            <div className="p-4 rounded-xl bg-zinc-900/40 border border-zinc-800/80 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 print:bg-transparent print:border-none print:p-0">
+            <div className="p-3.5 sm:p-4 rounded-xl bg-zinc-900/40 border border-zinc-800/80 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 print:bg-transparent print:border-none print:p-0">
               <div>
-                <h4 className="text-sm font-semibold text-zinc-200 font-sans print:text-black">
+                <h4 className="text-xs sm:text-sm font-semibold text-zinc-200 font-sans print:text-black">
                   Kanya Kubja Public School, CBSE
                 </h4>
-                <p className="text-xs text-zinc-400 font-mono print:text-zinc-600">
+                <p className="text-[11px] sm:text-xs text-zinc-400 font-mono print:text-zinc-600">
                   High School (10th Grade)
                 </p>
               </div>
-              <div className="text-right sm:text-right">
-                <span className="text-zinc-300 block print:text-black">2022</span>
-                <span className="text-[11px] text-zinc-500 print:text-zinc-700">Kanpur, India</span>
+              <div className="text-left sm:text-right">
+                <span className="text-zinc-300 block print:text-black text-[11px] sm:text-xs">2022</span>
+                <span className="text-[10px] sm:text-[11px] text-zinc-500 print:text-zinc-700">Kanpur, India</span>
               </div>
             </div>
           </div>
         </section>
 
         {/* ================= CERTIFICATIONS ================= */}
-        <section className="space-y-3">
+        <section className="space-y-2.5 sm:space-y-3">
           <div className="flex items-center gap-2 text-xs font-mono text-red-400 font-bold uppercase tracking-wider print:text-red-700">
-            <Award className="w-4 h-4" />
+            <Award className="w-4 h-4 shrink-0" />
             <span>CERTIFICATIONS</span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 text-xs font-mono">
             <div className="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center gap-2.5 print:bg-zinc-50 print:border-zinc-300">
               <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span className="text-zinc-200 font-sans text-sm print:text-black">
+              <span className="text-zinc-200 font-sans text-xs sm:text-sm print:text-black">
                 C++ Programming Certification
               </span>
             </div>
             <div className="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center gap-2.5 print:bg-zinc-50 print:border-zinc-300">
               <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span className="text-zinc-200 font-sans text-sm print:text-black">
+              <span className="text-zinc-200 font-sans text-xs sm:text-sm print:text-black">
                 AI Tools Workshop – Ben 10X
               </span>
             </div>
@@ -425,27 +435,27 @@ export default function ResumePage() {
         </section>
 
         {/* ================= SEMINARS / CONFERENCES / WORKSHOPS ================= */}
-        <section className="space-y-3">
+        <section className="space-y-2.5 sm:space-y-3">
           <div className="flex items-center gap-2 text-xs font-mono text-red-400 font-bold uppercase tracking-wider print:text-red-700">
-            <BookOpen className="w-4 h-4" />
+            <BookOpen className="w-4 h-4 shrink-0" />
             <span>SEMINARS / CONFERENCES / WORKSHOPS</span>
           </div>
 
-          <div className="space-y-2.5 text-xs sm:text-sm text-zinc-300 font-sans print:text-black">
+          <div className="space-y-2 sm:space-y-2.5 text-xs sm:text-sm text-zinc-300 font-sans print:text-black">
             <div className="p-3 rounded-xl bg-zinc-900/40 border border-zinc-800/80 flex items-start gap-2.5 print:bg-transparent print:border-none print:p-0">
-              <span className="text-red-500 font-bold">•</span>
+              <span className="text-red-500 font-bold shrink-0">•</span>
               <div>
                 <strong className="text-white print:text-black">Google Developer Program</strong> – Attendee
               </div>
             </div>
             <div className="p-3 rounded-xl bg-zinc-900/40 border border-zinc-800/80 flex items-start gap-2.5 print:bg-transparent print:border-none print:p-0">
-              <span className="text-red-500 font-bold">•</span>
+              <span className="text-red-500 font-bold shrink-0">•</span>
               <div>
                 <strong className="text-white print:text-black">C2AIR × CNCF Kanpur</strong> – Attendee
               </div>
             </div>
             <div className="p-3 rounded-xl bg-zinc-900/40 border border-zinc-800/80 flex items-start gap-2.5 print:bg-transparent print:border-none print:p-0">
-              <span className="text-red-500 font-bold">•</span>
+              <span className="text-red-500 font-bold shrink-0">•</span>
               <div>
                 <strong className="text-white print:text-black">Tech Expo 2K25</strong> – Participant; demonstrated teamwork and technical project presentation skills
               </div>
@@ -454,27 +464,27 @@ export default function ResumePage() {
         </section>
 
         {/* ================= ACHIEVEMENTS & ACTIVITIES ================= */}
-        <section className="space-y-3">
+        <section className="space-y-2.5 sm:space-y-3">
           <div className="flex items-center gap-2 text-xs font-mono text-red-400 font-bold uppercase tracking-wider print:text-red-700">
-            <Trophy className="w-4 h-4" />
+            <Trophy className="w-4 h-4 shrink-0" />
             <span>ACHIEVEMENTS & ACTIVITIES</span>
           </div>
 
-          <div className="space-y-2.5 text-xs sm:text-sm text-zinc-300 font-sans print:text-black">
+          <div className="space-y-2 sm:space-y-2.5 text-xs sm:text-sm text-zinc-300 font-sans print:text-black">
             <div className="p-3 rounded-xl bg-zinc-900/40 border border-zinc-800/80 flex items-start gap-2.5 print:bg-transparent print:border-none print:p-0">
-              <span className="text-amber-400 font-bold">•</span>
+              <span className="text-amber-400 font-bold shrink-0">•</span>
               <div>
                 <strong className="text-white print:text-black">Finalist – Tech Expo 2K25</strong>
               </div>
             </div>
             <div className="p-3 rounded-xl bg-zinc-900/40 border border-zinc-800/80 flex items-start gap-2.5 print:bg-transparent print:border-none print:p-0">
-              <span className="text-amber-400 font-bold">•</span>
+              <span className="text-amber-400 font-bold shrink-0">•</span>
               <div>
                 <strong className="text-white print:text-black">Participated in tech hackathons</strong> and developer community events
               </div>
             </div>
             <div className="p-3 rounded-xl bg-zinc-900/40 border border-zinc-800/80 flex items-start gap-2.5 print:bg-transparent print:border-none print:p-0">
-              <span className="text-amber-400 font-bold">•</span>
+              <span className="text-amber-400 font-bold shrink-0">•</span>
               <div>
                 <strong className="text-white print:text-black">Volunteer, College Club Activities</strong> – coordinated and led club
               </div>
@@ -483,7 +493,7 @@ export default function ResumePage() {
         </section>
 
         {/* Footer Navigation (Screen only) */}
-        <footer className="pt-6 border-t border-zinc-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono text-zinc-500 print:hidden">
+        <footer className="pt-5 sm:pt-6 border-t border-zinc-800 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 text-xs font-mono text-zinc-500 print:hidden">
           <span>PORTFOLIO CANON // AVIRAL MISHRA</span>
           <div className="flex items-center gap-4">
             <Link href="/projects" className="text-zinc-400 hover:text-red-400 transition-colors">

@@ -349,7 +349,7 @@ export default function TriumphWebNetwork({
                 opacity: isCenterHovered ? 1 : 0.7,
               }}
               transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-              className={`absolute -inset-6 rounded-full blur-xl transition-colors duration-500 ${
+              className={`absolute -inset-4 sm:-inset-6 rounded-full blur-xl transition-colors duration-500 ${
                 isCenterHovered
                   ? "bg-gradient-to-r from-blue-600 via-cyan-500 to-indigo-600 opacity-90 shadow-[0_0_50px_rgba(59,130,246,0.8)]"
                   : "bg-gradient-to-r from-red-600 via-amber-500 to-red-700 opacity-60 shadow-[0_0_40px_rgba(239,68,68,0.6)]"
@@ -358,8 +358,8 @@ export default function TriumphWebNetwork({
 
             {/* Central triumph badge structure */}
             <motion.div
-              whileHover={{ scale: 1.12, rotate: [0, -3, 3, 0] }}
-              className={`relative w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-zinc-950 border-4 transition-all duration-500 flex flex-col items-center justify-center p-3 shadow-2xl ${
+              whileHover={{ scale: 1.1, rotate: [0, -2, 2, 0] }}
+              className={`relative w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full bg-zinc-950 border-2 sm:border-4 transition-all duration-500 flex flex-col items-center justify-center p-2 sm:p-3 shadow-2xl ${
                 isCenterHovered
                   ? "border-blue-500 shadow-[0_0_35px_rgba(59,130,246,0.9)]"
                   : "border-red-600 shadow-[0_0_30px_rgba(239,68,68,0.6)]"
@@ -369,20 +369,20 @@ export default function TriumphWebNetwork({
               <div className="absolute inset-1 rounded-full border border-dashed border-white/20 animate-spin-slow pointer-events-none" />
 
               {/* Spider Emblem */}
-              <span className="text-3xl sm:text-4xl filter drop-shadow-[0_0_10px_rgba(239,68,68,0.8)]">
+              <span className="text-xl sm:text-3xl md:text-4xl filter drop-shadow-[0_0_10px_rgba(239,68,68,0.8)]">
                 🕷️
               </span>
 
               {/* TRIUMPH text */}
               <span
-                className={`text-xs sm:text-sm font-black font-mono tracking-widest uppercase mt-1 transition-colors duration-300 ${
+                className={`text-[9px] sm:text-xs md:text-sm font-black font-mono tracking-widest uppercase mt-0.5 sm:mt-1 transition-colors duration-300 ${
                   isCenterHovered ? "text-cyan-300" : "text-red-400"
                 }`}
               >
                 TRIUMPH
               </span>
 
-              <span className="text-[9px] font-mono text-zinc-400 font-bold uppercase tracking-wider">
+              <span className="text-[7px] sm:text-[9px] font-mono text-zinc-400 font-bold uppercase tracking-wider hidden sm:block">
                 CORE NODE
               </span>
             </motion.div>
@@ -414,13 +414,13 @@ export default function TriumphWebNetwork({
                   onMouseEnter={() => setHoveredNodeId(node.id)}
                   onMouseLeave={() => setHoveredNodeId(null)}
                   onClick={() => setSelectedNodeId(node.id)}
-                  whileHover={{ scale: 1.15, y: -4 }}
+                  whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   className="relative cursor-pointer group flex flex-col items-center"
                 >
                   {/* Red -> Blue Glowing Node Halo on Hover/Select */}
                   <div
-                    className={`absolute -inset-3 rounded-full blur-md transition-all duration-500 ${
+                    className={`absolute -inset-2 sm:-inset-3 rounded-full blur-md transition-all duration-500 ${
                       isHovered || isSelected
                         ? "bg-blue-500/80 scale-125 shadow-[0_0_30px_rgba(59,130,246,0.9)] opacity-100"
                         : "bg-red-600/40 opacity-0 group-hover:opacity-80"
@@ -429,17 +429,17 @@ export default function TriumphWebNetwork({
 
                   {/* Main Web Node Circle */}
                   <div
-                    className={`relative w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-zinc-950 border-2 transition-all duration-300 flex items-center justify-center shadow-xl ${
+                    className={`relative w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-zinc-950 border sm:border-2 transition-all duration-300 flex items-center justify-center shadow-xl ${
                       isHovered || isSelected
                         ? "border-blue-400 bg-zinc-900 text-blue-400 shadow-[0_0_25px_rgba(59,130,246,0.8)]"
                         : "border-red-600/80 text-red-400 group-hover:border-blue-400 group-hover:text-blue-400"
                     }`}
                   >
-                    <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 transition-colors duration-300" />
+                    <IconComponent className="w-4 h-4 sm:w-6 sm:h-6 md:w-7 md:h-7 transition-colors duration-300" />
 
                     {/* Category color indicator dot */}
                     <span
-                      className={`absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full border-2 border-zinc-950 ${
+                      className={`absolute -top-0.5 -right-0.5 sm:-top-1 sm:-right-1 w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 rounded-full border-2 border-zinc-950 ${
                         node.category === "triumphs"
                           ? "bg-amber-400 shadow-[0_0_8px_#f59e0b]"
                           : node.category === "activities"
@@ -453,7 +453,7 @@ export default function TriumphWebNetwork({
 
                   {/* Node Label Tooltip Pill */}
                   <div
-                    className={`mt-2 px-3 py-1 rounded-full text-[10px] sm:text-xs font-mono font-bold whitespace-nowrap tracking-wide border transition-all duration-300 max-w-[150px] truncate shadow-lg ${
+                    className={`mt-1 sm:mt-2 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[9px] sm:text-xs font-mono font-bold whitespace-nowrap tracking-wide border transition-all duration-300 max-w-[90px] sm:max-w-[150px] truncate shadow-lg ${
                       isHovered || isSelected
                         ? "bg-blue-950/90 border-blue-500/80 text-cyan-300 shadow-[0_0_15px_rgba(59,130,246,0.5)]"
                         : "bg-zinc-900/90 border-zinc-800 text-zinc-300 group-hover:border-blue-500/60 group-hover:text-white"
@@ -462,8 +462,8 @@ export default function TriumphWebNetwork({
                     {node.title}
                   </div>
 
-                  {/* Issue Badge Pill */}
-                  <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest mt-0.5">
+                  {/* Issue Badge Pill (Desktop only) */}
+                  <span className="text-[8px] sm:text-[9px] font-mono text-zinc-500 uppercase tracking-widest mt-0.5 hidden sm:block">
                     {node.issueNo || "NODE FEAT"}
                   </span>
                 </motion.div>
@@ -541,7 +541,7 @@ export default function TriumphWebNetwork({
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative z-10 w-full max-w-2xl bg-zinc-950 border-2 border-blue-500/80 rounded-2xl p-6 sm:p-8 shadow-[0_0_50px_rgba(59,130,246,0.4)] overflow-hidden text-white"
+              className="relative z-10 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-zinc-950 border-2 border-blue-500/80 rounded-2xl p-4 sm:p-8 shadow-[0_0_50px_rgba(59,130,246,0.4)] text-white"
             >
               {/* Top Red & Blue HUD Accent Lines */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-600 via-cyan-400 to-blue-600" />

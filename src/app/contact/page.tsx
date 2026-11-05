@@ -67,44 +67,54 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen pt-24 pb-20 px-4 sm:px-6 max-w-6xl mx-auto text-white relative font-sans">
-      {/* Background Atmosphere Glows */}
+    <main className="min-h-screen pt-20 sm:pt-24 pb-16 sm:pb-20 px-3 sm:px-6 max-w-6xl mx-auto text-white relative font-sans">
+      {/* Lightweight Ambient Glows using CSS radial gradients */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-red-600/15 rounded-full blur-[140px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/15 rounded-full blur-[140px]" />
+        <div
+          className="absolute top-1/4 left-1/4 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] rounded-full pointer-events-none"
+          style={{
+            background: "radial-gradient(circle, rgba(239,68,68,0.1) 0%, transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute bottom-1/4 right-1/4 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] rounded-full pointer-events-none"
+          style={{
+            background: "radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%)",
+          }}
+        />
       </div>
 
       {/* Header Section */}
-      <div className="relative z-10 text-center space-y-3 max-w-2xl mx-auto mb-12">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-red-500/10 border border-red-500/30 rounded-full text-red-400 font-mono text-xs uppercase tracking-widest shadow-[0_0_15px_rgba(239,68,68,0.2)]">
+      <div className="relative z-10 text-center space-y-3 max-w-2xl mx-auto mb-8 sm:mb-12 px-2">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-red-500/10 border border-red-500/30 rounded-full text-red-400 font-mono text-xs uppercase tracking-widest shadow-[0_0_15px_rgba(239,68,68,0.2)]">
           <Radio className="w-3.5 h-3.5 text-red-500 animate-pulse" />
           <span>SPIDEY-SENSE FREQUENCY // DIRECT COMM LINK</span>
         </div>
-        <h1 className="text-4xl sm:text-6xl font-black tracking-tight uppercase font-mono">
+        <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight uppercase font-mono">
           GET IN <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">TOUCH</span>
         </h1>
-        <p className="text-sm sm:text-base text-zinc-400 font-mono">
+        <p className="text-xs sm:text-sm md:text-base text-zinc-400 font-mono">
           Ready to build high-performance web applications, AI workflows, or explore engineering missions together.
         </p>
       </div>
 
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
         {/* LEFT COLUMN: Direct Contact Telemetry Cards */}
         <div className="lg:col-span-5 space-y-4">
-          <div className="p-6 rounded-2xl bg-zinc-950/80 border border-zinc-800 backdrop-blur-xl shadow-xl space-y-4">
-            <h2 className="text-sm font-mono text-zinc-400 uppercase tracking-widest flex items-center gap-2">
+          <div className="p-4 sm:p-6 rounded-2xl bg-zinc-950/80 border border-zinc-800 backdrop-blur-xl shadow-xl space-y-4">
+            <h2 className="text-xs sm:text-sm font-mono text-zinc-400 uppercase tracking-widest flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-red-500" />
               DIRECT TRANSMISSION CHANNELS
             </h2>
 
             {/* Email Card */}
-            <div className="p-4 rounded-xl bg-zinc-900/70 border border-zinc-800 hover:border-red-500/50 transition-all flex items-center justify-between group">
-              <div className="flex items-center gap-3 min-w-0">
-                <div className="w-10 h-10 rounded-lg bg-red-500/10 border border-red-500/30 flex items-center justify-center shrink-0">
-                  <Mail className="w-5 h-5 text-red-400" />
+            <div className="p-3 sm:p-4 rounded-xl bg-zinc-900/70 border border-zinc-800 hover:border-red-500/50 transition-all flex items-center justify-between group">
+              <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-red-500/10 border border-red-500/30 flex items-center justify-center shrink-0">
+                  <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-red-400" />
                 </div>
                 <div className="min-w-0">
-                  <span className="text-[10px] font-mono text-zinc-500 uppercase block">Email Address</span>
+                  <span className="text-[9px] sm:text-[10px] font-mono text-zinc-500 uppercase block">Email Address</span>
                   <a 
                     href="mailto:aviralmisrhra718@gmail.com" 
                     className="text-xs sm:text-sm font-mono text-zinc-200 hover:text-red-400 transition-colors truncate block"
@@ -128,13 +138,13 @@ export default function ContactPage() {
             </div>
 
             {/* Phone Card */}
-            <div className="p-4 rounded-xl bg-zinc-900/70 border border-zinc-800 hover:border-red-500/50 transition-all flex items-center justify-between group">
-              <div className="flex items-center gap-3 min-w-0">
-                <div className="w-10 h-10 rounded-lg bg-red-500/10 border border-red-500/30 flex items-center justify-center shrink-0">
-                  <Phone className="w-5 h-5 text-red-400" />
+            <div className="p-3 sm:p-4 rounded-xl bg-zinc-900/70 border border-zinc-800 hover:border-red-500/50 transition-all flex items-center justify-between group">
+              <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-red-500/10 border border-red-500/30 flex items-center justify-center shrink-0">
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-red-400" />
                 </div>
                 <div className="min-w-0">
-                  <span className="text-[10px] font-mono text-zinc-500 uppercase block">Phone / Mobile</span>
+                  <span className="text-[9px] sm:text-[10px] font-mono text-zinc-500 uppercase block">Phone / Mobile</span>
                   <a 
                     href="tel:+919170252358" 
                     className="text-xs sm:text-sm font-mono text-zinc-200 hover:text-red-400 transition-colors truncate block"
@@ -158,24 +168,24 @@ export default function ContactPage() {
             </div>
 
             {/* Location Card */}
-            <div className="p-4 rounded-xl bg-zinc-900/70 border border-zinc-800 flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center shrink-0">
-                <MapPin className="w-5 h-5 text-blue-400" />
+            <div className="p-3 sm:p-4 rounded-xl bg-zinc-900/70 border border-zinc-800 flex items-center gap-2.5 sm:gap-3">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center shrink-0">
+                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
               </div>
               <div>
-                <span className="text-[10px] font-mono text-zinc-500 uppercase block">Base of Operations</span>
+                <span className="text-[9px] sm:text-[10px] font-mono text-zinc-500 uppercase block">Base of Operations</span>
                 <span className="text-xs sm:text-sm font-mono text-zinc-200">Kanpur, Uttar Pradesh, India</span>
               </div>
             </div>
           </div>
 
           {/* Social Profiles Card */}
-          <div className="p-6 rounded-2xl bg-zinc-950/80 border border-zinc-800 backdrop-blur-xl shadow-xl space-y-3">
-            <h3 className="text-xs font-mono text-zinc-400 uppercase tracking-widest">
+          <div className="p-4 sm:p-6 rounded-2xl bg-zinc-950/80 border border-zinc-800 backdrop-blur-xl shadow-xl space-y-3">
+            <h3 className="text-[11px] sm:text-xs font-mono text-zinc-400 uppercase tracking-widest">
               DEVELOPER PROFILES & NETWORKS
             </h3>
 
-            <div className="grid grid-cols-2 gap-3 font-mono text-xs">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 font-mono text-xs">
               <a
                 href="https://linkedin.com/in/aviral-mishra18"
                 target="_blank"
@@ -207,24 +217,24 @@ export default function ContactPage() {
 
         {/* RIGHT COLUMN: Interactive Web Comm Dispatcher */}
         <div className="lg:col-span-7">
-          <div className="p-6 sm:p-8 rounded-2xl bg-zinc-950/90 border border-zinc-800 backdrop-blur-xl shadow-2xl space-y-6">
-            <div className="flex items-center justify-between border-b border-zinc-800/80 pb-4">
-              <div className="flex items-center gap-2 text-sm font-mono font-bold text-white uppercase">
+          <div className="p-4 sm:p-8 rounded-2xl bg-zinc-950/90 border border-zinc-800 backdrop-blur-xl shadow-2xl space-y-5 sm:space-y-6">
+            <div className="flex items-center justify-between border-b border-zinc-800/80 pb-3 sm:pb-4">
+              <div className="flex items-center gap-2 text-xs sm:text-sm font-mono font-bold text-white uppercase">
                 <MessageSquare className="w-4 h-4 text-red-500" />
                 <span>SPIDER COMM TRANSMITTER</span>
               </div>
-              <div className="flex items-center gap-1.5 text-[11px] font-mono text-emerald-400">
+              <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-mono text-emerald-400">
                 <ShieldCheck className="w-3.5 h-3.5" />
-                <span>ENCRYPTED // ACTIVE</span>
+                <span>ENCRYPTED</span>
               </div>
             </div>
 
             {sentStatus ? (
-              <div className="p-8 rounded-xl bg-red-950/30 border border-red-500/40 text-center space-y-3 font-mono">
+              <div className="p-6 sm:p-8 rounded-xl bg-red-950/30 border border-red-500/40 text-center space-y-3 font-mono">
                 <div className="w-12 h-12 rounded-full bg-red-500/20 border border-red-500/50 flex items-center justify-center mx-auto text-red-400">
                   <Check className="w-6 h-6" />
                 </div>
-                <h3 className="text-lg font-bold text-white">Transmitter Triggered!</h3>
+                <h3 className="text-base sm:text-lg font-bold text-white">Transmitter Triggered!</h3>
                 <p className="text-xs text-zinc-400 max-w-sm mx-auto">
                   Your mail client has been loaded with the message addressed to aviralmisrhra718@gmail.com.
                 </p>
@@ -236,10 +246,10 @@ export default function ContactPage() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4 font-mono text-xs">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4 font-mono text-xs">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-zinc-400 font-bold mb-1.5 uppercase">
+                    <label htmlFor="name" className="block text-zinc-400 font-bold mb-1 uppercase text-[11px]">
                       Your Name
                     </label>
                     <input
@@ -248,13 +258,13 @@ export default function ContactPage() {
                       required
                       value={formState.name}
                       onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                      className="w-full px-4 py-3 bg-zinc-900/90 border border-zinc-800 rounded-xl focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 text-white placeholder-zinc-600 transition-all"
+                      className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 bg-zinc-900/90 border border-zinc-800 rounded-xl focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 text-white placeholder-zinc-600 transition-all text-xs"
                       placeholder="e.g. Peter Parker"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-zinc-400 font-bold mb-1.5 uppercase">
+                    <label htmlFor="email" className="block text-zinc-400 font-bold mb-1 uppercase text-[11px]">
                       Your Email
                     </label>
                     <input
@@ -263,14 +273,14 @@ export default function ContactPage() {
                       required
                       value={formState.email}
                       onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                      className="w-full px-4 py-3 bg-zinc-900/90 border border-zinc-800 rounded-xl focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 text-white placeholder-zinc-600 transition-all"
+                      className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 bg-zinc-900/90 border border-zinc-800 rounded-xl focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 text-white placeholder-zinc-600 transition-all text-xs"
                       placeholder="e.g. peter@example.com"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-zinc-400 font-bold mb-1.5 uppercase">
+                  <label htmlFor="subject" className="block text-zinc-400 font-bold mb-1 uppercase text-[11px]">
                     Subject / Mission Type
                   </label>
                   <input
@@ -278,29 +288,29 @@ export default function ContactPage() {
                     id="subject"
                     value={formState.subject}
                     onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
-                    className="w-full px-4 py-3 bg-zinc-900/90 border border-zinc-800 rounded-xl focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 text-white placeholder-zinc-600 transition-all"
+                    className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 bg-zinc-900/90 border border-zinc-800 rounded-xl focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 text-white placeholder-zinc-600 transition-all text-xs"
                     placeholder="Project Inquiry / Job Opportunity / Collaboration"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-zinc-400 font-bold mb-1.5 uppercase">
+                  <label htmlFor="message" className="block text-zinc-400 font-bold mb-1 uppercase text-[11px]">
                     Message Details
                   </label>
                   <textarea
                     id="message"
                     required
-                    rows={5}
+                    rows={4}
                     value={formState.message}
                     onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                    className="w-full px-4 py-3 bg-zinc-900/90 border border-zinc-800 rounded-xl focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 text-white placeholder-zinc-600 transition-all resize-none"
+                    className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 bg-zinc-900/90 border border-zinc-800 rounded-xl focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 text-white placeholder-zinc-600 transition-all resize-none text-xs"
                     placeholder="Describe your project, timeline, or message..."
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold rounded-xl transition-all shadow-[0_0_25px_rgba(239,68,68,0.4)] flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wider"
+                  className="w-full py-3.5 sm:py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold rounded-xl transition-all shadow-[0_0_25px_rgba(239,68,68,0.4)] flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wider text-xs sm:text-sm"
                 >
                   <Send className="w-4 h-4" />
                   <span>Transmit Message</span>

@@ -84,6 +84,30 @@ export default function EntryGate({ onEnter }: EntryGateProps) {
     };
   }, [visible]);
 
+  // Interactive Cursor Parallax Tracking for Spider-Man in Entry Gate
+  useEffect(() => {
+    if (!visible || !spideyImgRef.current) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (isEntering || !spideyImgRef.current) return;
+      const xNorm = (e.clientX / window.innerWidth - 0.5) * 2;
+      const yNorm = (e.clientY / window.innerHeight - 0.5) * 2;
+
+      gsap.to(spideyImgRef.current, {
+        rotationY: xNorm * 16,
+        rotationX: -yNorm * 12,
+        x: xNorm * 18,
+        y: yNorm * 8,
+        transformPerspective: 900,
+        duration: 0.5,
+        ease: "power2.out",
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [visible, isEntering]);
+
   // Synthetic Web-Shoot "Thwip" Sound using Web Audio API
   const playWebShootSound = () => {
     try {

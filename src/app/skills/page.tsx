@@ -19,10 +19,22 @@ export default function SkillsPage() {
   );
 
   return (
-    <main className="min-h-screen pt-28 pb-20 px-4 sm:px-6 max-w-7xl mx-auto relative overflow-hidden bg-black text-white">
-      {/* Soft, Eye-Friendly Background Atmosphere Glow Accents */}
-      <div className="absolute top-10 right-0 w-96 h-96 bg-red-600/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 left-0 w-96 h-96 bg-red-800/10 rounded-full blur-[140px] pointer-events-none" />
+    <main className="min-h-screen pt-24 sm:pt-28 pb-20 px-4 sm:px-6 max-w-7xl mx-auto relative overflow-hidden bg-black text-white">
+      {/* Lightweight Ambient Glows using CSS radial gradients */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <div
+          className="absolute top-10 right-0 w-[400px] h-[400px] rounded-full pointer-events-none"
+          style={{
+            background: "radial-gradient(circle, rgba(239,68,68,0.1) 0%, transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute bottom-10 left-0 w-[400px] h-[400px] rounded-full pointer-events-none"
+          style={{
+            background: "radial-gradient(circle, rgba(220,38,38,0.08) 0%, transparent 70%)",
+          }}
+        />
+      </div>
 
       {/* Page Header Section */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 relative z-10">
@@ -31,10 +43,10 @@ export default function SkillsPage() {
             <span className="w-2 h-2 rounded-full bg-red-400 animate-ping" />
             <span>🕸️ SPIDER ARSENAL // ACTIVE HUD</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight uppercase font-mono">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight uppercase font-mono">
             WEB OF <span className="text-red-500">TECH STACK</span>
           </h1>
-          <p className="text-zinc-400 text-sm md:text-base max-w-xl mt-2 font-mono">
+          <p className="text-zinc-400 text-xs sm:text-sm md:text-base max-w-xl mt-2 font-mono">
             Interactive tech telemetry directly reflecting Aviral Mishra&apos;s technical arsenal. Hover over suit modules to inspect Spidey-Sense telemetry!
           </p>
         </div>
@@ -66,7 +78,7 @@ export default function SkillsPage() {
           <button
             key={cat.id}
             onClick={() => setSelectedCategory(cat.id as CategoryType)}
-            className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all border ${
+            className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs font-mono font-bold transition-all border ${
               selectedCategory === cat.id
                 ? "bg-red-500/15 border-red-500/60 text-red-300 shadow-[0_0_15px_rgba(239,68,68,0.2)] scale-105"
                 : "bg-zinc-900/80 border-zinc-800 text-zinc-400 hover:border-zinc-700 hover:text-white"
