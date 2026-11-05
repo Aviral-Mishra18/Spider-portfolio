@@ -10,13 +10,34 @@ type CategoryType = "all" | "languages" | "frontend" | "backend" | "database" | 
 
 export default function SkillsPage() {
   const [selectedCategory, setSelectedCategory] = useState<CategoryType>("all");
-  const [hoveredSkillId, setHoveredSkillId] = useState<string | null>(null);
-  const [isCoreHovered, setIsCoreHovered] = useState<boolean>(false);
+  const [isUnlocked, setIsUnlocked] = useState<boolean>(false);
+  const [webFiring, setWebFiring] = useState<boolean>(false);
+  const [webAttached, setWebAttached] = useState<boolean>(false);
 
   // Filter skills by selected category
   const filteredSkills = SKILLS_DATA.filter((skill) =>
     selectedCategory === "all" ? true : skill.category === selectedCategory
   );
+
+  const handleCoreClick = () => {
+    if (!isUnlocked) {
+      setWebFiring(true);
+      // Step 1: Web shoots out from SPIDER-DEV Core
+      // Step 2: At 400ms, web reaches & attaches to cards, and cards flip over!
+      setTimeout(() => {
+        setWebAttached(true);
+        setIsUnlocked(true);
+      }, 400);
+      // Step 3: Web shooting burst animation settles
+      setTimeout(() => {
+        setWebFiring(false);
+      }, 1300);
+    } else {
+      // Detach webs and flip cards back to locked state
+      setWebAttached(false);
+      setIsUnlocked(false);
+    }
+  };
 
   return (
     <main className="min-h-screen pt-24 sm:pt-28 pb-20 px-4 sm:px-6 max-w-7xl mx-auto relative overflow-hidden bg-black text-white">
@@ -53,15 +74,17 @@ export default function SkillsPage() {
 
         {/* Soft, Sleek Status Indicator */}
         <div className="bg-zinc-900/90 border border-zinc-800 px-4 py-2.5 rounded-2xl flex items-center gap-3 shadow-lg backdrop-blur-md self-start md:self-auto font-mono text-xs text-zinc-300">
-          <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse" />
-          <span>SUIT HUD: ONLINE</span>
+          <span className={`w-2 h-2 rounded-full ${isUnlocked ? "bg-emerald-400" : "bg-red-400"} animate-pulse`} />
+          <span>{isUnlocked ? "ARSENAL: UNLOCKED // WEBS ATTACHED" : "ARSENAL: LOCKED // AWAITING WEB"}</span>
         </div>
       </div>
 
       {/* Central Core Web Network Graph */}
       <SkillsWebGraph
-        hoveredSkillId={hoveredSkillId}
-        onCoreHover={(hovered) => setIsCoreHovered(hovered)}
+        isUnlocked={isUnlocked}
+        webAttached={webAttached}
+        onCoreClick={handleCoreClick}
+        webFiring={webFiring}
       />
 
       {/* Category Filter Bar */}
@@ -89,20 +112,20 @@ export default function SkillsPage() {
         ))}
       </div>
 
-      {/* Skills Nodes Grid */}
-      <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+      {/* Skills Nodes Grid - Pure CSS Grid without layout thrashing */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
         <AnimatePresence mode="popLayout">
-          {filteredSkills.map((skill) => (
+          {filteredSkills.map((skill, index) => (
             <SpideySenseNode
               key={skill.id}
               skill={skill}
-              isHovered={hoveredSkillId === skill.id || isCoreHovered}
-              onHoverStart={() => setHoveredSkillId(skill.id)}
-              onHoverEnd={() => setHoveredSkillId(null)}
+              index={index}
+              isUnlocked={isUnlocked}
+              webAttached={webAttached}
             />
           ))}
         </AnimatePresence>
-      </motion.div>
+      </div>
     </main>
   );
 }

@@ -1,14 +1,16 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useRef, useState, useEffect, memo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface SkillsWebGraphProps {
-  hoveredSkillId: string | null;
-  onCoreHover: (hovered: boolean) => void;
+  isUnlocked: boolean;
+  webAttached?: boolean;
+  onCoreClick: () => void;
+  webFiring: boolean;
 }
 
-// Realistic High-Precision Spider Emblem Graphic
+// Ultra-Smooth Realistic Spider Emblem (Hardware-accelerated vectors, no CPU filter)
 function RealisticSpiderEmblem({ className = "w-12 h-12" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -23,16 +25,9 @@ function RealisticSpiderEmblem({ className = "w-12 h-12" }: { className?: string
           <stop offset="50%" stopColor="#ef4444" />
           <stop offset="100%" stopColor="#991b1b" />
         </linearGradient>
-        <filter id="subtleSpiderGlow" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="1.5" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
       </defs>
 
-      <g filter="url(#subtleSpiderGlow)">
+      <g>
         {/* Abdomen (Lower Body) */}
         <path
           d="M50 48 C42.5 48 36.5 57 36.5 68 C36.5 79 42.5 88 50 88 C57.5 88 63.5 79 63.5 68 C63.5 57 57.5 48 50 48 Z"
@@ -64,9 +59,11 @@ function RealisticSpiderEmblem({ className = "w-12 h-12" }: { className?: string
   );
 }
 
-export default function SkillsWebGraph({
-  hoveredSkillId,
-  onCoreHover,
+function SkillsWebGraphComponent({
+  isUnlocked,
+  webAttached = false,
+  onCoreClick,
+  webFiring,
 }: SkillsWebGraphProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [corePos, setCorePos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
@@ -77,7 +74,7 @@ export default function SkillsWebGraph({
         const rect = containerRef.current.getBoundingClientRect();
         setCorePos({
           x: rect.width / 2,
-          y: 80, // Top center core position
+          y: 70, // Top center core position
         });
       }
     };
@@ -87,25 +84,66 @@ export default function SkillsWebGraph({
     return () => window.removeEventListener("resize", updateCorePos);
   }, []);
 
+  // Synthetic Web-Shoot "Thwip" Sound using Web Audio API
+  const playWebShootSound = () => {
+    try {
+      const AudioCtx =
+        window.AudioContext ||
+        (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sawtooth";
+      osc.frequency.setValueAtTime(950, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(120, ctx.currentTime + 0.2);
+      gain.gain.setValueAtTime(0.3, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.2);
+    } catch {}
+  };
+
+  const handleCoreNodeClick = () => {
+    playWebShootSound();
+    onCoreClick();
+  };
+
   return (
     <div ref={containerRef} className="relative w-full mb-10 flex flex-col items-center">
-      {/* Central Core Spider Node */}
+      {/* Central Core Spider Node (Matching Image 2) */}
       <motion.div
-        onHoverStart={() => onCoreHover(true)}
-        onHoverEnd={() => onCoreHover(false)}
+        onClick={handleCoreNodeClick}
         whileHover={{ scale: 1.06 }}
-        className="relative z-20 cursor-pointer group flex flex-col items-center"
+        whileTap={{ scale: 0.95 }}
+        className="relative z-20 cursor-pointer group flex flex-col items-center select-none"
+        title={isUnlocked ? "Click to relock cards" : "Click to fire webs & flip cards open"}
       >
-        {/* Soft, Eye-Friendly Subtle Halo (No blinding neon glare) */}
-        <div className="absolute -inset-3 bg-red-600/20 rounded-full blur-lg opacity-40 group-hover:opacity-75 group-hover:scale-110 transition-all duration-500 pointer-events-none" />
+        {/* Pulsing Spidey Core Aura */}
+        <div
+          className={`absolute -inset-2 rounded-full blur-lg transition-colors duration-300 pointer-events-none ${
+            isUnlocked
+              ? "bg-red-500/25"
+              : "bg-red-600/20 group-hover:bg-red-500/40"
+          }`}
+        />
 
-        {/* Central Core Circle Badge with Sleek Metallic / Dark Glassmorphic Ring */}
-        <div className="relative z-10 w-24 h-24 rounded-full bg-zinc-950 border-2 border-red-500/50 group-hover:border-red-400 flex flex-col items-center justify-center p-2 shadow-[0_4px_20px_rgba(0,0,0,0.8)] transition-all duration-300">
-          {/* Subtle Inner Ring */}
-          <div className="absolute inset-1 rounded-full border border-red-500/10 pointer-events-none" />
+        {/* Central Core Circle Badge with Sleek Metallic Ring */}
+        <div
+          className={`relative z-10 w-24 h-24 rounded-full bg-zinc-950 border-2 transition-colors duration-200 flex flex-col items-center justify-center p-2 shadow-md ${
+            isUnlocked
+              ? "border-emerald-500/80 shadow-[0_0_20px_rgba(16,185,129,0.35)]"
+              : "border-red-500/80 group-hover:border-red-400 shadow-[0_0_20px_rgba(239,68,68,0.4)]"
+          }`}
+        >
+          {/* Outer Crosshair Ticks (Matching Image 2) */}
+          <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-3.5 h-3.5 border-l-2 border-t-2 border-red-500/80 rounded-tl pointer-events-none" />
+          <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse pointer-events-none" />
 
-          {/* Real Realistic Spider Vector */}
-          <div className="transform transition-transform duration-300 group-hover:scale-110">
+          {/* Realistic Spider Vector */}
+          <div className="transform transition-transform duration-200 group-hover:scale-105">
             <RealisticSpiderEmblem className="w-11 h-11" />
           </div>
 
@@ -114,19 +152,133 @@ export default function SkillsWebGraph({
           </span>
         </div>
 
-        {/* Sub-label badge with eye-friendly soft red border & text */}
-        <div className="mt-2 px-3 py-1 bg-zinc-900/90 border border-zinc-800 rounded-full text-[11px] font-mono text-zinc-300 font-medium tracking-wide shadow-md flex items-center gap-1.5 group-hover:border-red-500/40 transition-colors">
+        {/* Sub-label badge (Matching Image 2: "• CORE TECH NODE // AVIRAL") */}
+        <div className="mt-2.5 px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-full text-[11px] font-mono text-zinc-300 font-medium tracking-wide shadow-sm flex items-center gap-1.5 group-hover:border-red-500/40 transition-colors">
           <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" />
           <span>CORE TECH NODE // AVIRAL</span>
         </div>
+
+        {/* Interactive Action Prompt Callout */}
+        <motion.div
+          animate={{ y: [0, -2, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+          className={`mt-2.5 px-3.5 py-1 rounded-full text-[10px] font-mono font-bold tracking-widest uppercase border transition-colors duration-200 flex items-center gap-1.5 ${
+            isUnlocked
+              ? "bg-emerald-500/15 border-emerald-500/40 text-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.2)]"
+              : webFiring
+              ? "bg-red-500/30 border-white text-white shadow-[0_0_15px_#ef4444]"
+              : "bg-red-600/20 border-red-500/70 text-red-300 shadow-[0_0_12px_rgba(239,68,68,0.3)]"
+          }`}
+        >
+          <span className="text-yellow-300">⚡</span>
+          <span>
+            {isUnlocked
+              ? "WEBS ATTACHED • CLICK TO DETACH & RELOCK"
+              : webFiring
+              ? "SHOOTING WEBS... ATTACHING TO CARDS..."
+              : "CLICK SPIDER-DEV TO SHOOT WEBS & FLIP CARDS"}
+          </span>
+          <span className="text-yellow-300">⚡</span>
+        </motion.div>
       </motion.div>
 
-      {/* Background Spider Web Net SVG Grid (Soft, low opacity) */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible opacity-25">
-        {/* Background Concentric Spider Web Rings */}
+      {/* ================================================================= */}
+      {/* HARDWARE-ACCELERATED WEB SHOOT ANIMATION RAYS (NO CPU BLUR)       */}
+      {/* ================================================================= */}
+      <AnimatePresence>
+        {webFiring && (
+          <motion.svg
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="absolute inset-0 w-full h-[520px] pointer-events-none z-30 overflow-visible"
+          >
+            {/* 8-Way Radiant Web Strands */}
+            {[-460, -320, -180, -60, 60, 180, 320, 460].map((offset, i) => (
+              <g key={i}>
+                {/* Outer Glow Line */}
+                <motion.line
+                  x1="50%"
+                  y1={corePos.y + 20}
+                  x2={`calc(50% + ${offset}px)`}
+                  y2={corePos.y + 260 + Math.abs(offset) * 0.16}
+                  stroke="#ef4444"
+                  strokeWidth="5"
+                  strokeOpacity="0.45"
+                  strokeLinecap="round"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 0.28, ease: "easeOut", delay: i * 0.015 }}
+                />
+                {/* Core White Laser Silk Ray */}
+                <motion.line
+                  x1="50%"
+                  y1={corePos.y + 20}
+                  x2={`calc(50% + ${offset}px)`}
+                  y2={corePos.y + 260 + Math.abs(offset) * 0.16}
+                  stroke="#ffffff"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 0.28, ease: "easeOut", delay: i * 0.015 }}
+                />
+
+                {/* Target Web Impact Burst Circle */}
+                <motion.circle
+                  cx={`calc(50% + ${offset}px)`}
+                  cy={corePos.y + 260 + Math.abs(offset) * 0.16}
+                  r="10"
+                  fill="none"
+                  stroke="#ef4444"
+                  strokeWidth="2"
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: [0, 1.6, 2.2], opacity: [0, 1, 0] }}
+                  transition={{ duration: 0.35, delay: 0.15 + i * 0.015 }}
+                />
+              </g>
+            ))}
+
+            {/* Center Web Muzzle Flash */}
+            <motion.circle
+              cx="50%"
+              cy={corePos.y + 20}
+              r="40"
+              fill="rgba(239, 68, 68, 0.2)"
+              stroke="#ffffff"
+              strokeWidth="2"
+              initial={{ scale: 0.4, opacity: 0 }}
+              animate={{ scale: [0.4, 1.5, 2.2], opacity: [0, 1, 0] }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+            />
+          </motion.svg>
+        )}
+      </AnimatePresence>
+
+      {/* Background Spider Web Net SVG Grid */}
+      <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible opacity-20">
+        {/* Persistent Connected Web Filaments when Unlocked */}
+        {isUnlocked && (
+          <g className="opacity-40">
+            {[-380, -220, -70, 70, 220, 380].map((offset, i) => (
+              <line
+                key={`conn-${i}`}
+                x1="50%"
+                y1={corePos.y + 20}
+                x2={`calc(50% + ${offset}px)`}
+                y2={corePos.y + 240 + Math.abs(offset) * 0.12}
+                stroke="#ef4444"
+                strokeWidth="1.2"
+                strokeDasharray="3 3"
+              />
+            ))}
+          </g>
+        )}
+        {/* Concentric Spider Web Rings */}
         <ellipse
           cx="50%"
-          cy="80"
+          cy="70"
           rx="250"
           ry="150"
           fill="none"
@@ -136,7 +288,7 @@ export default function SkillsWebGraph({
         />
         <ellipse
           cx="50%"
-          cy="80"
+          cy="70"
           rx="450"
           ry="280"
           fill="none"
@@ -148,3 +300,5 @@ export default function SkillsWebGraph({
     </div>
   );
 }
+
+export default memo(SkillsWebGraphComponent);

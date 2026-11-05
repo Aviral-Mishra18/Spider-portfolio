@@ -516,9 +516,9 @@ export default function SpiderScene3D() {
     <div className="w-full h-[380px] md:h-[480px] relative pointer-events-auto">
       <Canvas
         camera={{ position: [0, 0, 6], fov: 52 }}
-        dpr={[1, 1.5]}
+        dpr={[1, 1.25]}
         gl={{
-          powerPreference: "low-power",
+          powerPreference: "high-performance",
           antialias: true,
           stencil: false,
           depth: true,
